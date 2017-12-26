@@ -178,7 +178,18 @@ public class Helper {
 		int mod = mb.getModifiers();
 		ITypeBinding returnTypeBinding = mb.getMethodDeclaration().getReturnType();
 		String returnTypeName = returnTypeBinding.getQualifiedName();
-		MethodInfo mi = new MethodInfo(returnTypeName, returnTypeBinding, mod);
+		
+		ITypeBinding[] parameterTypes = mb.getMethodDeclaration().getParameterTypes();
+		String parameterTypeNames = "";	
+		if (parameterTypes.length > 0) {
+			parameterTypeNames = parameterTypes[0].getQualifiedName();
+			for (int i = 1; i < parameterTypes.length; i++) {
+				ITypeBinding tb = parameterTypes[i];
+				parameterTypeNames += (":" + tb.getQualifiedName());
+			}	
+		}
+		
+		MethodInfo mi = new MethodInfo(returnTypeName, returnTypeBinding, parameterTypeNames, mod);
 		return mi;
 	}
 
@@ -192,7 +203,12 @@ public class Helper {
 	public static MethodInfo getMethodInfo(Method method) {
 		int mod = method.getModifiers();
 		String returnTypeName = getGenericReturnTypeNameForMethod(method.toGenericString());
-		MethodInfo mi = new MethodInfo(returnTypeName, null, mod);
+		
+		String parameterTypeNames = "";
+		if (method.getGenericParameterTypes().length > 0) 
+			parameterTypeNames += getGenericParameterTypeNamesForMethod(method.toGenericString());
+		
+		MethodInfo mi = new MethodInfo(returnTypeName, null, parameterTypeNames, mod);
 		return mi;
 	}
 
@@ -224,14 +240,6 @@ public class Helper {
 			return key;
 		else
 			return key.substring(0, index);
-	}
-
-	public static String getParameterString(String key) {
-		int index = key.indexOf(":");
-		if (index == -1)
-			return "";
-		else
-			return key.substring(index + 1);
 	}
 
 	public static boolean isInStaticMethod(Statement statement) {

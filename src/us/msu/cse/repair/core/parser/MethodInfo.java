@@ -5,11 +5,15 @@ import org.eclipse.jdt.core.dom.ITypeBinding;
 public class MethodInfo {
 	String returnTypeName;
 	ITypeBinding returnTypeBinding;
+	String parameterTypeNames;
+	
 	int mod;
 
-	public MethodInfo(String returnTypeName, ITypeBinding returnTypeBinding, int mod) {
+	public MethodInfo(String returnTypeName, ITypeBinding returnTypeBinding, String parameterTypeNames,
+			int mod) {
 		this.returnTypeName = returnTypeName;
 		this.returnTypeBinding = returnTypeBinding;
+		this.parameterTypeNames = parameterTypeNames;
 		this.mod = mod;
 	}
 
@@ -23,6 +27,10 @@ public class MethodInfo {
 
 	public int getModifiers() {
 		return this.mod;
+	}
+	
+	public String getParameterTypeNames() {
+		return this.parameterTypeNames;
 	}
 
 	public boolean isStronglyReturnTypeMatched(MethodInfo mi) {

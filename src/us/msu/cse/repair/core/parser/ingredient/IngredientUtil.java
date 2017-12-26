@@ -242,13 +242,11 @@ public class IngredientUtil {
 	}
 
 	static int getMethodMatchDegree(Map.Entry<String, MethodInfo> entry1, Map.Entry<String, MethodInfo> entry2) {
-		String key1 = entry1.getKey();
 		MethodInfo mi1 = entry1.getValue();
-		String ps1 = Helper.getParameterString(key1);
+		String ps1 = mi1.getParameterTypeNames();
 
-		String key2 = entry2.getKey();
 		MethodInfo mi2 = entry2.getValue();
-		String ps2 = Helper.getParameterString(key2);
+		String ps2 = mi2.getParameterTypeNames();
 
 		if (ps1.equals(ps2) && mi1.isStronglyReturnTypeMatched(mi2))
 			return 2;
