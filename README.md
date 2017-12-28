@@ -49,7 +49,7 @@ be used. Moreover, at least four parameters related with the bugyy program are r
 In the above command, "path_to_directory_of_src_buggy" etc should be replaced with the actual 
 absolute paths (the tool currently only supports absolute paths). All the test-suite adequate
 patches found by the approach are saved in the directory arja/patches_$id$.txt by default. $id$ is a randomly 
-generated string containing for characters. 
+generated string containing four characters. 
 
 
 ### Advanced Usage
