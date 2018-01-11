@@ -521,7 +521,7 @@ public abstract class AbstractRepairProblem extends Problem {
 		}
 	}
 
-	public Map<String, String> getModifiedJavaSources(Map<String, ASTRewrite> astRewriters) {
+	protected Map<String, String> getModifiedJavaSources(Map<String, ASTRewrite> astRewriters) {
 		Map<String, String> javaSources = new HashMap<String, String>();
 
 		for (Entry<String, ASTRewrite> entry : astRewriters.entrySet()) {
@@ -543,7 +543,7 @@ public abstract class AbstractRepairProblem extends Problem {
 		return javaSources;
 	}
 
-	public boolean manipulateOneModificationPoint(ModificationPoint mp, String manipName, Statement ingredStatement,
+	protected boolean manipulateOneModificationPoint(ModificationPoint mp, String manipName, Statement ingredStatement,
 			Map<String, ASTRewrite> astRewriters) throws JMException {
 		String sourceFilePath = mp.getSourceFilePath();
 		ASTRewrite rewriter;
@@ -560,7 +560,7 @@ public abstract class AbstractRepairProblem extends Problem {
 		return manipulation.manipulate();
 	}
 
-	public Map<String, JavaFileObject> getCompiledClassesForTestExecution(Map<String, String> javaSources) {
+	protected Map<String, JavaFileObject> getCompiledClassesForTestExecution(Map<String, String> javaSources) {
 		JavaJDKCompiler compiler = new JavaJDKCompiler(ClassLoader.getSystemClassLoader(), compilerOptions);
 		try {
 			boolean isCompiled = compiler.compile(javaSources);
@@ -575,7 +575,7 @@ public abstract class AbstractRepairProblem extends Problem {
 		return null;
 	}
 
-	public ITestExecutor getTestExecutor(Map<String, JavaFileObject> compiledClasses, Set<String> executePosTests)
+	protected ITestExecutor getTestExecutor(Map<String, JavaFileObject> compiledClasses, Set<String> executePosTests)
 			throws JMException, IOException {
 		if (testExecutorName.equalsIgnoreCase("ExternalTestExecutor")) {
 			File binWorkingDirFile = new File(binWorkingRoot, "bin_" + (globalID++));
@@ -594,7 +594,7 @@ public abstract class AbstractRepairProblem extends Problem {
 		}
 	}
 
-	public Set<String> getSamplePositiveTests() {
+	protected Set<String> getSamplePositiveTests() {
 		if (percentage == null || percentage == 1)
 			return positiveTests;
 		else {
