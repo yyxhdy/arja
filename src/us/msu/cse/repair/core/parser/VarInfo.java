@@ -42,6 +42,9 @@ public class VarInfo {
 	}
 
 	public boolean isWeaklyTypeMatched(VarInfo vi) {
+		if (varBinding == null || vi.getVariableBinding() == null)
+			return false;
+		
 		ITypeBinding tb = vi.getTypeBinding();
 		ITypeBinding typeBinding = varBinding.getVariableDeclaration().getType();
 
