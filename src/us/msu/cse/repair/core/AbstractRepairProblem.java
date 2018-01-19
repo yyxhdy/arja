@@ -239,6 +239,7 @@ public abstract class AbstractRepairProblem extends Problem {
 
 		globalID = 0;
 		evaluations = 0;
+		launchTime = System.currentTimeMillis();
 		patches = new HashSet<Patch>();
 	}
 
