@@ -133,6 +133,8 @@ public class ArjaProblem extends AbstractRepairProblem {
 						array[i + size] = index;
 						selectedMP.put(i, suspValue);
 					}
+					else 
+						bits.set(i, false);
 				} else
 					selectedMP.put(i, suspValue);
 			}
