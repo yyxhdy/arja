@@ -623,11 +623,25 @@ public class IngredientUtil {
 
 				if (!flag1 && !flag2)
 					return false;
-			} else {
+			} else { /*
 				int index = cls.lastIndexOf("$");
 				String pc = cls.substring(0, index);
 				if (!pc.equals(clsName))
 					return false;
+				*/
+				
+				int index = cls.lastIndexOf("$");
+				String pc = cls.substring(0, index);
+				String qc = cls.substring(index + 1);
+				
+				boolean flag = false;
+				for (ITypeBinding innerType : tb.getDeclaredTypes()) {
+					if (innerType.getName().equals(qc))
+						flag = true;
+				}
+				
+				if (!pc.equals(clsName) && !flag)
+					return false; 
 			}
 
 		}
