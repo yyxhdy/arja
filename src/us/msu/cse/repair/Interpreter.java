@@ -69,6 +69,12 @@ public class Interpreter {
 		if (ingredientModeS != null)
 			parameters.put("ingredientMode", ingredientModeS);
 		
+		String diffFormatS = parameterStrs.get("diffFormat");
+		if (diffFormatS != null) {
+			boolean diffFormat = Boolean.parseBoolean(diffFormatS);
+			parameters.put("diffFormat", diffFormat);
+		}
+		
 		return parameters;
 	}
 	
