@@ -22,6 +22,7 @@ import us.msu.cse.repair.core.manipulation.RedirectBranchManipulation;
 import us.msu.cse.repair.core.parser.ModificationPoint;
 import us.msu.cse.repair.core.AbstractRepairProblem;
 import us.msu.cse.repair.core.testexecutors.ITestExecutor;
+import us.msu.cse.repair.core.util.IO;
 
 public class Kali extends AbstractRepairProblem {
 
@@ -154,8 +155,13 @@ public class Kali extends AbstractRepairProblem {
 		Map<String, String> modifiedJavaSources = getModifiedJavaSources(astRewriters);
 		Map<String, JavaFileObject> compiledClasses = getCompiledClassesForTestExecution(modifiedJavaSources);
 
-		if (compiledClasses != null)
-			return invokeTestExecutor(compiledClasses);
+		if (compiledClasses != null) {
+			boolean flag = invokeTestExecutor(compiledClasses);
+			if (flag && diffFormat) {
+				IO.savePatch(modifiedJavaSources, binJavaDir, patchOutputRoot, 0);
+			}
+			return flag;
+		}
 		else
 			return false;
 	}
