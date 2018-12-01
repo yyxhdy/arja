@@ -129,6 +129,8 @@ public abstract class AbstractRepairProblem extends Problem {
 	protected Boolean manipulationFilterRule;
 
 	protected Boolean seedLineGenerated;
+	
+	protected Boolean diffFormat;
 
 	protected String jvmPath;
 	protected List<String> compilerOptions;
@@ -212,6 +214,10 @@ public abstract class AbstractRepairProblem extends Problem {
 			ingredientMode = IngredientMode.Package;
 		else
 			ingredientMode = IngredientMode.valueOf(modeStr);
+		
+		diffFormat = (Boolean) parameters.get("diffFormat");
+		if (diffFormat == null)
+			diffFormat = true;
 		
 
 		testFiltered = (Boolean) parameters.get("testFiltered");
