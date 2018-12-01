@@ -251,4 +251,53 @@ public class IO {
 			FileUtils.writeByteArrayToFile(file, bytes);
 		}
 	}
+	
+	
+	public static void savePatch(Map<String, String> modifiedJavaSources, String binJavaDir,
+			String patchDir, int globalID) throws IOException, InterruptedException {
+		File root = new File(patchDir, "Patch_" + globalID);
+		List<String> diffs = new ArrayList<>();
+		
+		for (Map.Entry<String, String> entry : modifiedJavaSources.entrySet()) {
+			String orgFilePath = entry.getKey();
+			File patched = new File(root, "patched");
+			
+			String relative = new File(binJavaDir).toURI().relativize(new File(orgFilePath).toURI()).getPath();
+			File revisedFile = new File(patched, relative);
+			FileUtils.writeByteArrayToFile(revisedFile, entry.getValue().getBytes());
+			
+			List<String> diff = getDiff(orgFilePath, revisedFile.getAbsolutePath());
+			diffs.addAll(diff);
+			diffs.add("\n");
+		}
+		
+		FileUtils.writeLines(new File(root, "diff"), diffs);;
+	}
+	static List<String> getDiff(String orgFilePath, String revisedFilePath) throws IOException, InterruptedException {
+		List<String> params = new ArrayList<String>();
+		params.add("diff");
+		params.add("-u");
+		params.add(orgFilePath);
+		params.add(revisedFilePath);
+		
+		ProcessBuilder builder = new ProcessBuilder(params);
+		builder.redirectOutput();
+		builder.redirectErrorStream(true);
+		builder.directory();
+
+		Process process = builder.start();
+		
+		BufferedReader in = new BufferedReader(new InputStreamReader(process.getInputStream()));
+		String line;
+		List<String> lines = new ArrayList<>();
+		while ((line = in.readLine()) != null) {
+		   lines.add(line);
+		}
+		process.waitFor();
+
+		in.close();
+		
+		return lines;
+	}
+
 }
