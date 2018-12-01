@@ -16,6 +16,7 @@ import jmetal.util.JMException;
 import us.msu.cse.repair.core.AbstractRepairProblem;
 import us.msu.cse.repair.core.parser.ModificationPoint;
 import us.msu.cse.repair.core.testexecutors.ITestExecutor;
+import us.msu.cse.repair.core.util.IO;
 import us.msu.cse.repair.ec.representation.GenProgSolutionType;
 import us.msu.cse.repair.ec.variable.Edits;
 
@@ -120,7 +121,16 @@ public class GenProgProblem extends AbstractRepairProblem {
 		List<Integer> ingredList = edits.getIngredList();
 		try {
 			if (addTestAdequatePatch(opList, locList, ingredList)) {
-				saveTestAdequatePatch(opList, locList, ingredList);
+				if (diffFormat) {
+					try {
+						IO.savePatch(modifiedJavaSources, binJavaDir, this.patchOutputRoot, globalID);
+					} catch (InterruptedException e) {
+						// TODO Auto-generated catch block
+						e.printStackTrace();
+					}
+				}
+				else
+					saveTestAdequatePatch(opList, locList, ingredList);
 				globalID++;
 			}
 		} catch (IOException e) {
