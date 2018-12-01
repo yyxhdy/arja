@@ -25,6 +25,7 @@ import us.msu.cse.repair.core.AbstractRepairProblem;
 import us.msu.cse.repair.core.filterrules.MIFilterRule;
 import us.msu.cse.repair.core.parser.ModificationPoint;
 import us.msu.cse.repair.core.testexecutors.ITestExecutor;
+import us.msu.cse.repair.core.util.IO;
 import us.msu.cse.repair.ec.representation.ArrayIntAndBinarySolutionType;
 
 public class ArjaProblem extends AbstractRepairProblem {
@@ -211,7 +212,16 @@ public class ArjaProblem extends AbstractRepairProblem {
 
 		try {
 			if (addTestAdequatePatch(opList, locList, ingredList)) {
-				saveTestAdequatePatch(opList, locList, ingredList);
+				if (diffFormat) {
+					try {
+						IO.savePatch(modifiedJavaSources, binJavaDir, this.patchOutputRoot, globalID);
+					} catch (InterruptedException e) {
+						// TODO Auto-generated catch block
+						e.printStackTrace();
+					}
+				}
+				else
+					saveTestAdequatePatch(opList, locList, ingredList);
 				globalID++;
 			}
 		} catch (IOException e) {
