@@ -217,7 +217,7 @@ public abstract class AbstractRepairProblem extends Problem {
 		
 		diffFormat = (Boolean) parameters.get("diffFormat");
 		if (diffFormat == null)
-			diffFormat = true;
+			diffFormat = false;
 		
 
 		testFiltered = (Boolean) parameters.get("testFiltered");
