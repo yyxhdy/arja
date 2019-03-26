@@ -214,7 +214,7 @@ public class ArjaProblem extends AbstractRepairProblem {
 			if (addTestAdequatePatch(opList, locList, ingredList)) {
 				if (diffFormat) {
 					try {
-						IO.savePatch(modifiedJavaSources, binJavaDir, this.patchOutputRoot, globalID);
+						IO.savePatch(modifiedJavaSources, srcJavaDir, this.patchOutputRoot, globalID);
 					} catch (InterruptedException e) {
 						// TODO Auto-generated catch block
 						e.printStackTrace();

@@ -256,7 +256,7 @@ public class IO {
 	}
 	
 	
-	public static void savePatch(Map<String, String> modifiedJavaSources, String binJavaDir,
+	public static void savePatch(Map<String, String> modifiedJavaSources, String srcJavaDir,
 			String patchDir, int globalID) throws IOException, InterruptedException {
 		File root = new File(patchDir, "Patch_" + globalID);
 		List<String> diffs = new ArrayList<>();
@@ -265,7 +265,7 @@ public class IO {
 			String orgFilePath = entry.getKey();
 			File patched = new File(root, "patched");
 			
-			String relative = new File(binJavaDir).toURI().relativize(new File(orgFilePath).toURI()).getPath();
+			String relative = new File(srcJavaDir).toURI().relativize(new File(orgFilePath).toURI()).getPath();
 			File revisedFile = new File(patched, relative);
 			FileUtils.writeByteArrayToFile(revisedFile, entry.getValue().getBytes());
 			
