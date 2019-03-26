@@ -127,8 +127,13 @@ public class Kali extends AbstractRepairProblem {
 			return false;
 		Map<String, String> modifiedJavaSources = getModifiedJavaSources(astRewriters);
 		Map<String, JavaFileObject> compiledClasses = getCompiledClassesForTestExecution(modifiedJavaSources);
-		if (compiledClasses != null)
-			return invokeTestExecutor(compiledClasses);
+		if (compiledClasses != null) {
+			boolean flag = invokeTestExecutor(compiledClasses);
+			if (flag && diffFormat) {
+				IO.savePatch(modifiedJavaSources, srcJavaDir, patchOutputRoot, 0);
+			}
+			return flag;
+		}
 		else
 			return false;
 	}
