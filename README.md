@@ -40,7 +40,7 @@ $ java -cp lib/*:bin us.msu.cse.repair.Main Arja -DsrcJavaDir path_to_directory_
                                                  -Ddependences paths_to_dependences_buggy 
 ```
 "Arja" means that the repair approach ARJA is run. Alternatively, "GenProg", "RSRepair" and "Kali" can 
-be used. Moreover, at least four parameters related with the bugyy program are required.
+be used. Moreover, at least four parameters related with the buggy program are required.
 1. -DsrcJavaDir  :  the path to the root directory of the source code 
 2. -DbinJavaDir  :  the path to the root directory of all the compiled classes of source code
 3. -DbinTestDir  :  the path to the root directory of all the compiled classes of test code
@@ -88,7 +88,7 @@ $ mkdir bin
 $ javac -cp lib/*: -d bin $(find src -name '*.java')
 ```
 
-Similarily, the external project is compiled as follows:
+Similarly, the external project is compiled as follows:
 ```
 $ cd external
 $ rm -r bin
