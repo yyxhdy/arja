@@ -6,6 +6,10 @@ test filtering procedure, type matching and several strategies to reduce the sea
 This tool provides the implementation of ARJA along with three previous notable repair approaches 
 (i.e., GenProg, RSRepair and Kali).
 
+If you use ARJA for academic purpose, please include the following citation:
+
+Yuan Yuan and Wolfgang Banzhaf. 2018. ARJA: Automated repair of Java programs via multi-objective geneticprogramming. IEEE Transactions on Software Engineering (2018). https://doi.org/10.1109/TSE.2018.2874648
+
 
 ## Requirements
 
