@@ -8,7 +8,8 @@ This tool provides the implementation of ARJA along with three previous notable 
 
 If you use ARJA for academic purpose, please include the following citation:
 
-Yuan Yuan and Wolfgang Banzhaf. 2018. ARJA: Automated repair of Java programs via multi-objective geneticprogramming. IEEE Transactions on Software Engineering (2018). https://doi.org/10.1109/TSE.2018.2874648
+Yuan Yuan and Wolfgang Banzhaf. 2018. ARJA: Automated repair of Java programs via multi-objective genetic
+programming. IEEE Transactions on Software Engineering (2018). https://doi.org/10.1109/TSE.2018.2874648
 
 
 ## Requirements
@@ -48,7 +49,7 @@ be used. Moreover, at least four parameters related with the buggy program are r
 1. -DsrcJavaDir  :  the path to the root directory of the source code 
 2. -DbinJavaDir  :  the path to the root directory of all the compiled classes of source code
 3. -DbinTestDir  :  the path to the root directory of all the compiled classes of test code
-4. -Ddependences :  the paths to the the dependences (jar files). If more than one, separated by ":"
+4. -Ddependences :  the paths to the dependences (jar files). If more than one, separated by ":"
 
 In the above command, "path_to_directory_of_src_buggy" etc should be replaced with the actual 
 absolute paths (the tool currently only supports absolute paths). All the test-suite adequate
