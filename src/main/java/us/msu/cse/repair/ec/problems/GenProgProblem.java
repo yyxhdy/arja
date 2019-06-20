@@ -129,8 +129,7 @@ public class GenProgProblem extends AbstractRepairProblem {
 						e.printStackTrace();
 					}
 				}
-				else
-					saveTestAdequatePatch(opList, locList, ingredList);
+				saveTestAdequatePatch(opList, locList, ingredList);
 				globalID++;
 			}
 		} catch (IOException e) {

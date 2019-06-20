@@ -1,11 +1,13 @@
 package us.msu.cse.repair;
 
+import java.lang.reflect.Field;
 import java.util.HashMap;
 import java.util.HashSet;
 import java.util.Map;
 import java.util.Set;
 
 import jmetal.util.JMException;
+import jmetal.util.PseudoRandom;
 
 public class Interpreter {
 	
@@ -79,6 +81,25 @@ public class Interpreter {
 			boolean diffFormat = Boolean.parseBoolean(diffFormatS);
 			parameters.put("diffFormat", diffFormat);
 		}
+
+		String seed_str = parameterStrs.get("seed");
+		double seed = 0.0;
+		if (seed_str != null) {
+			seed = Double.parseDouble(seed_str);
+		}
+		try {
+			PseudoRandom.randDouble();
+
+			Field random_1 = PseudoRandom.class.getDeclaredField("random_");
+			random_1.setAccessible(true);
+			Object random_ = random_1.get(null);
+			Field seed_field = random_.getClass().getDeclaredField("seed");
+			seed_field.setAccessible(true);
+			seed_field.set(random_, seed);
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+
 		
 		return parameters;
 	}

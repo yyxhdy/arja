@@ -9,8 +9,8 @@
     <description>Arja</description>
     <properties>
         <default.encoding>UTF-8</default.encoding>
-        <maven.compiler.source>1.8</maven.compiler.source>
-        <maven.compiler.target>1.8</maven.compiler.target>
+        <maven.compiler.source>1.7</maven.compiler.source>
+        <maven.compiler.target>1.7</maven.compiler.target>
     </properties>
     <dependencies>
         <dependency>
@@ -36,9 +36,9 @@
             <version>0.1.1</version>
         </dependency>
         <dependency>
-            <groupId>org.eclipse.scout.sdk.deps</groupId>
+            <groupId>org.eclipse.jdt</groupId>
             <artifactId>org.eclipse.jdt.core</artifactId>
-            <version>3.12.0.v20160516-2131</version>
+            <version>3.10.0</version>
         </dependency>
         <dependency>
             <groupId>junit</groupId>

@@ -274,7 +274,7 @@ public class IO {
 			diffs.add("\n");
 		}
 		
-		FileUtils.writeLines(new File(root, "diff"), diffs);;
+		FileUtils.writeLines(new File(root, "diff"), diffs);
 	}
 	static List<String> getDiff(String orgFilePath, String revisedFilePath) throws IOException, InterruptedException {
 		List<String> params = new ArrayList<String>();
