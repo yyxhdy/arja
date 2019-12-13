@@ -1,4 +1,4 @@
-# ARJA-e
+# ARJA-e: A System for Better Evolutionary Program Repair
 
 ARJA-e is a new evolutionary repair system for Java. Compared to its 
 predecessor ARJA (https://github.com/yyxhdy/arja), ARJA-e includes the following new features:
