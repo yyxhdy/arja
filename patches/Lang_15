@@ -1,0 +1,26 @@
+diff -w -r -u Lang15b/src/main/java/org/apache/commons/lang3/reflect/TypeUtils.java Lang15b_Patch/src/main/java/org/apache/commons/lang3/reflect/TypeUtils.java
+--- Lang15b/src/main/java/org/apache/commons/lang3/reflect/TypeUtils.java	2019-03-31 14:17:29.000000000 -0400
++++ Lang15b_Patch/src/main/java/org/apache/commons/lang3/reflect/TypeUtils.java	2019-03-31 14:17:29.000000000 -0400
+@@ -110,10 +110,7 @@
+      * @return true if <code>type</code> is assignable to <code>toClass</code>.
+      */
+     private static boolean isAssignable(Type type, Class<?> toClass) {
+-        if (type == null) {
+-            // consistency with ClassUtils.isAssignable() behavior
+-            return toClass == null || !toClass.isPrimitive();
+-        }
++        if (type == null || !(type instanceof Class<?> || type instanceof ParameterizedType || type instanceof GenericArrayType || type instanceof WildcardType)){return toClass == null || !toClass.isPrimitive();}
+ 
+         // only a null type can be assigned to null type which
+         // would have cause the previous to return true
+@@ -673,8 +670,10 @@
+ 
+         // has target class been reached?
+         if (cls.getTypeParameters().length > 0 || toClass.equals(cls)) {
++            if (toClass.equals(cls)) {
+             return typeVarAssigns;
+         }
++        }
+ 
+         // walk the inheritance hierarchy until the target class is reached
+         return getTypeArguments(getClosestParentType(cls, toClass), toClass, typeVarAssigns);

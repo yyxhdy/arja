@@ -1,0 +1,13 @@
+diff -w -r -u Math39b/src/main/java/org/apache/commons/math/ode/nonstiff/EmbeddedRungeKuttaIntegrator.java Math39b_Patch/src/main/java/org/apache/commons/math/ode/nonstiff/EmbeddedRungeKuttaIntegrator.java
+--- Math39b/src/main/java/org/apache/commons/math/ode/nonstiff/EmbeddedRungeKuttaIntegrator.java	2019-03-31 14:20:31.000000000 -0400
++++ Math39b_Patch/src/main/java/org/apache/commons/math/ode/nonstiff/EmbeddedRungeKuttaIntegrator.java	2019-03-31 14:20:31.000000000 -0400
+@@ -248,6 +248,9 @@
+ 
+         stepSize = hNew;
+ 
++        if ((forward && (stepStart + stepSize > t)) || ((!forward) && (stepStart + stepSize < t))) {
++			stepSize = t - stepStart;
++		}
+         // next stages
+         for (int k = 1; k < stages; ++k) {
+ 

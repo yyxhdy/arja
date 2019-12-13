@@ -1,0 +1,16 @@
+diff -w -r -u Math71b/src/main/java/org/apache/commons/math/ode/events/EventState.java Math71b_Patch/src/main/java/org/apache/commons/math/ode/events/EventState.java
+--- Math71b/src/main/java/org/apache/commons/math/ode/events/EventState.java	2019-03-31 14:21:49.000000000 -0400
++++ Math71b_Patch/src/main/java/org/apache/commons/math/ode/events/EventState.java	2019-03-31 14:21:53.000000000 -0400
+@@ -235,11 +235,7 @@
+                     } else if (Double.isNaN(previousEventTime) ||
+                                (Math.abs(previousEventTime - root) > convergence)) {
+                         pendingEventTime = root;
+-                        if (pendingEvent && (Math.abs(t1 - pendingEventTime) <= convergence)) {
+-                            // we were already waiting for this event which was
+-                            // found during a previous call for a step that was
+-                            // rejected, this step must now be accepted since it
+-                            // properly ends exactly at the event occurrence
++                        if (pendingEvent && (Math.abs(t1 - pendingEventTime) <= maxIterationCount)) {
+                             return false;
+                         }
+                         // either we were not waiting for the event or it has

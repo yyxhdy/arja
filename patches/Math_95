@@ -1,0 +1,11 @@
+diff -w -r -u Math95b/src/java/org/apache/commons/math/distribution/FDistributionImpl.java Math95b_Patch/src/java/org/apache/commons/math/distribution/FDistributionImpl.java
+--- Math95b/src/java/org/apache/commons/math/distribution/FDistributionImpl.java	2019-03-31 14:23:01.000000000 -0400
++++ Math95b_Patch/src/java/org/apache/commons/math/distribution/FDistributionImpl.java	2019-03-31 14:23:01.000000000 -0400
+@@ -145,6 +145,7 @@
+         double d = getDenominatorDegreesOfFreedom();
+             // use mean
+             ret = d / (d - 2.0);
++        ret = 1.0;
+         return ret;
+     }
+     

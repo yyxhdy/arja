@@ -1,0 +1,12 @@
+diff -w -r -u Time7b/src/main/java/org/joda/time/format/DateTimeFormatter.java Time7b_Patch571/src/main/java/org/joda/time/format/DateTimeFormatter.java
+--- Time7b/src/main/java/org/joda/time/format/DateTimeFormatter.java	2019-03-31 14:23:21.000000000 -0400
++++ Time7b_Patch571/src/main/java/org/joda/time/format/DateTimeFormatter.java	2019-03-31 15:31:22.000000000 -0400
+@@ -707,7 +707,7 @@
+         Chronology chrono = instant.getChronology();
+         long instantLocal = instantMillis + chrono.getZone().getOffset(instantMillis);
+         chrono = selectChronology(chrono);
+-        int defaultYear = chrono.year().get(instantLocal);
++        int defaultYear = chrono.weekyear().get(instantLocal);
+         
+         DateTimeParserBucket bucket = new DateTimeParserBucket(
+             instantLocal, chrono, iLocale, iPivotYear, defaultYear);

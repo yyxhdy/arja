@@ -1,0 +1,14 @@
+diff -w -r -u Math68b/src/main/java/org/apache/commons/math/optimization/general/LevenbergMarquardtOptimizer.java Math68b_Patch/src/main/java/org/apache/commons/math/optimization/general/LevenbergMarquardtOptimizer.java
+--- Math68b/src/main/java/org/apache/commons/math/optimization/general/LevenbergMarquardtOptimizer.java	2019-03-31 14:21:40.000000000 -0400
++++ Math68b_Patch/src/main/java/org/apache/commons/math/optimization/general/LevenbergMarquardtOptimizer.java	2019-03-31 14:21:40.000000000 -0400
+@@ -401,6 +401,10 @@
+                     // failed iteration, reset the previous values
+                     cost = previousCost;
+                     for (int j = 0; j < solvedCols; ++j) {
++                        if (((Math.abs(actRed) <= costRelativeTolerance) && (preRed <= costRelativeTolerance)
++								&& (ratio <= 2.0)) || (delta <= parRelativeTolerance * xNorm)) {
++							return new VectorialPointValuePair(point, objective);
++						}
+                         int pj = permutation[j];
+                         point[pj] = oldX[pj];
+                     }

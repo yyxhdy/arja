@@ -1,0 +1,17 @@
+diff -w -r -u Lang51b/src/java/org/apache/commons/lang/BooleanUtils.java Lang51b_Patch/src/java/org/apache/commons/lang/BooleanUtils.java
+--- Lang51b/src/java/org/apache/commons/lang/BooleanUtils.java	2019-03-31 14:18:55.000000000 -0400
++++ Lang51b_Patch/src/java/org/apache/commons/lang/BooleanUtils.java	2019-03-31 14:18:55.000000000 -0400
+@@ -674,10 +674,9 @@
+                         (str.charAt(1) == 'e' || str.charAt(1) == 'E') &&
+                         (str.charAt(2) == 's' || str.charAt(2) == 'S');
+                 }
+-                if (ch == 'Y') {
+-                    return 
+-                        (str.charAt(1) == 'E' || str.charAt(1) == 'e') &&
+-                        (str.charAt(2) == 'S' || str.charAt(2) == 's');
++                if (ch == 'Y' || !("yes".equalsIgnoreCase(str))) {
++					return (str.charAt(1) == 'E' || str.charAt(1) == 'e')
++							&& (str.charAt(2) == 'S' || str.charAt(2) == 's');
+                 }
+             }
+             case 4: {

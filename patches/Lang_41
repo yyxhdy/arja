@@ -1,0 +1,21 @@
+diff -w -r -u Lang41b/src/java/org/apache/commons/lang/ClassUtils.java Lang41b_Patch/src/java/org/apache/commons/lang/ClassUtils.java
+--- Lang41b/src/java/org/apache/commons/lang/ClassUtils.java	2019-03-31 14:18:22.000000000 -0400
++++ Lang41b_Patch/src/java/org/apache/commons/lang/ClassUtils.java	2019-03-31 14:18:22.000000000 -0400
+@@ -169,7 +169,7 @@
+         if (cls == null) {
+             return StringUtils.EMPTY;
+         }
+-        return getShortClassName(cls.getName());
++        return getShortCanonicalName(cls.getName());
+     }
+ 
+     /**
+@@ -229,7 +229,7 @@
+         if (cls == null) {
+             return StringUtils.EMPTY;
+         }
+-        return getPackageName(cls.getName());
++        return getPackageCanonicalName(cls.getName());
+     }
+ 
+     /**

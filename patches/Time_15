@@ -1,0 +1,27 @@
+diff -w -r -u Time15b/src/main/java/org/joda/time/field/FieldUtils.java Time15b_Patch/src/main/java/org/joda/time/field/FieldUtils.java
+--- Time15b/src/main/java/org/joda/time/field/FieldUtils.java	2019-03-31 14:23:10.000000000 -0400
++++ Time15b_Patch/src/main/java/org/joda/time/field/FieldUtils.java	2019-03-31 14:23:10.000000000 -0400
+@@ -133,18 +133,16 @@
+      * @since 1.2
+      */
+     public static long safeMultiply(long val1, int val2) {
+-        switch (val2) {
+-            case -1:
+-                return -val1;
+-            case 0:
+-                return 0L;
+-            case 1:
+-                return val1;
++        if (val1 == 0 || val2 == 0) {
++			return 0;
+         }
+         long total = val1 * val2;
+         if (total / val2 != val1) {
+           throw new ArithmeticException("Multiplication overflows a long: " + val1 + " * " + val2);
+         }
++        if (total / val2 != val1 || val1 == Long.MIN_VALUE && val2 == -1 || val2 == Long.MIN_VALUE && val1 == -1) {
++			throw new ArithmeticException("Multiplication overflows a long: " + val1 + " * " + val2);
++		}
+         return total;
+     }
+ 

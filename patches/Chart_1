@@ -1,0 +1,12 @@
+diff -w -r -u Chart1b/source/org/jfree/chart/renderer/category/AbstractCategoryItemRenderer.java Chart1b_Patch/source/org/jfree/chart/renderer/category/AbstractCategoryItemRenderer.java
+--- Chart1b/source/org/jfree/chart/renderer/category/AbstractCategoryItemRenderer.java	2019-03-31 14:15:15.000000000 -0400
++++ Chart1b_Patch/source/org/jfree/chart/renderer/category/AbstractCategoryItemRenderer.java	2019-03-31 14:15:16.000000000 -0400
+@@ -1794,7 +1794,7 @@
+         }
+         int index = this.plot.getIndexOf(this);
+         CategoryDataset dataset = this.plot.getDataset(index);
+-        if (dataset != null) {
++        if (dataset != null && !(dataset instanceof SelectableCategoryDataset)) {
+             return result;
+         }
+         int seriesCount = dataset.getRowCount();

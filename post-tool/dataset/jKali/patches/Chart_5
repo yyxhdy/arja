@@ -1,0 +1,19 @@
+diff -w -r -u Chart5b/source/org/jfree/data/xy/XYSeries.java Chart5b_Patch6/source/org/jfree/data/xy/XYSeries.java
+--- Chart5b/source/org/jfree/data/xy/XYSeries.java	2017-03-20 23:17:16.000000000 +0800
++++ Chart5b_Patch6/source/org/jfree/data/xy/XYSeries.java	2017-04-11 00:03:19.000000000 +0800
+@@ -560,11 +560,10 @@
+             // Collections.binarySearch() and tells us where to insert the
+             // new item...otherwise it will be just -1 and we should just
+             // append the value to the list...
+-            if (this.autoSort) {
+-                this.data.add(-index - 1, new XYDataItem(x, y));
+-            }
+-            else {
+-                this.data.add(new XYDataItem(x, y));
++            if (false) {
++                    this.data.add(((-index) - 1), new org.jfree.data.xy.XYDataItem(x , y));
++            } else {
++                    this.data.add(new org.jfree.data.xy.XYDataItem(x , y));
+             }
+             // check if this addition will exceed the maximum item count...
+             if (getItemCount() > this.maximumItemCount) {

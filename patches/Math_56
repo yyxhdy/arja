@@ -1,0 +1,12 @@
+diff -w -r -u Math56b/src/main/java/org/apache/commons/math/util/MultidimensionalCounter.java Math56b_Patch/src/main/java/org/apache/commons/math/util/MultidimensionalCounter.java
+--- Math56b/src/main/java/org/apache/commons/math/util/MultidimensionalCounter.java	2019-03-31 14:21:07.000000000 -0400
++++ Math56b_Patch/src/main/java/org/apache/commons/math/util/MultidimensionalCounter.java	2019-03-31 14:21:07.000000000 -0400
+@@ -236,7 +236,7 @@
+ 
+         int idx = 1;
+         while (count < index) {
+-            count += idx;
++            count += MathUtils.sign(idx);
+             ++idx;
+         }
+         --idx;

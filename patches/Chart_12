@@ -1,0 +1,11 @@
+diff -w -r -u Chart12b/source/org/jfree/chart/plot/MultiplePiePlot.java Chart12b_Patch/source/org/jfree/chart/plot/MultiplePiePlot.java
+--- Chart12b/source/org/jfree/chart/plot/MultiplePiePlot.java	2019-03-31 14:15:37.000000000 -0400
++++ Chart12b_Patch/source/org/jfree/chart/plot/MultiplePiePlot.java	2019-03-31 14:15:37.000000000 -0400
+@@ -146,6 +146,7 @@
+         PiePlot piePlot = new PiePlot(null);
+         this.pieChart = new JFreeChart(piePlot);
+         this.pieChart.removeLegend();
++        setDataset(dataset);
+         this.dataExtractOrder = TableOrder.BY_COLUMN;
+         this.pieChart.setBackgroundPaint(null);
+         TextTitle seriesTitle = new TextTitle("Series Title",

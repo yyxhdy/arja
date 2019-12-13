@@ -1,0 +1,12 @@
+diff -w -r -u Math6b/src/main/java/org/apache/commons/math3/optim/BaseOptimizer.java Math6b_Patch/src/main/java/org/apache/commons/math3/optim/BaseOptimizer.java
+--- Math6b/src/main/java/org/apache/commons/math3/optim/BaseOptimizer.java	2019-03-31 14:21:18.000000000 -0400
++++ Math6b_Patch/src/main/java/org/apache/commons/math3/optim/BaseOptimizer.java	2019-03-31 14:21:18.000000000 -0400
+@@ -90,7 +90,7 @@
+      * @return the number of evaluations of the objective function.
+      */
+     public int getIterations() {
+-        return iterations.getCount();
++        return evaluations.getCount();
+     }
+ 
+     /**

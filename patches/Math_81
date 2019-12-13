@@ -1,0 +1,11 @@
+diff -w -r -u Math81b/src/main/java/org/apache/commons/math/linear/EigenDecompositionImpl.java Math81b_Patch/src/main/java/org/apache/commons/math/linear/EigenDecompositionImpl.java
+--- Math81b/src/main/java/org/apache/commons/math/linear/EigenDecompositionImpl.java	2019-03-31 14:22:24.000000000 -0400
++++ Math81b_Patch/src/main/java/org/apache/commons/math/linear/EigenDecompositionImpl.java	2019-03-31 14:22:24.000000000 -0400
+@@ -1617,6 +1617,7 @@
+                 }
+             } else {
+ 
++                dMin1 = -work[4 * start + pingPong];
+                 // case 9.
+                 tau = 0.25 * dMin1;
+                 if (dMin1 == dN1) {

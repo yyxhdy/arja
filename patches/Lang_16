@@ -1,0 +1,14 @@
+diff -w -r -u Lang16b/src/main/java/org/apache/commons/lang3/math/NumberUtils.java Lang16b_Patch/src/main/java/org/apache/commons/lang3/math/NumberUtils.java
+--- Lang16b/src/main/java/org/apache/commons/lang3/math/NumberUtils.java	2019-03-31 14:17:35.000000000 -0400
++++ Lang16b_Patch/src/main/java/org/apache/commons/lang3/math/NumberUtils.java	2019-03-31 14:17:35.000000000 -0400
+@@ -481,6 +481,10 @@
+                 if (expPos > str.length()) {
+                     throw new NumberFormatException(str + " is not a valid number.");
+                 }
++                try {
++					return createInteger(str);
++				} catch (NumberFormatException nfe) {
++				}
+                 mant = str.substring(0, expPos);
+             } else {
+                 mant = str;

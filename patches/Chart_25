@@ -1,0 +1,12 @@
+diff -w -r -u Chart25b/source/org/jfree/data/statistics/DefaultStatisticalCategoryDataset.java Chart25b_Patch/source/org/jfree/data/statistics/DefaultStatisticalCategoryDataset.java
+--- Chart25b/source/org/jfree/data/statistics/DefaultStatisticalCategoryDataset.java	2019-03-31 14:16:24.000000000 -0400
++++ Chart25b_Patch/source/org/jfree/data/statistics/DefaultStatisticalCategoryDataset.java	2019-03-31 14:16:29.000000000 -0400
+@@ -270,7 +270,7 @@
+      * @return The column count.
+      */
+     public int getColumnCount() {
+-        return this.data.getColumnCount();
++        return this.data.getRowCount();
+     }
+ 
+     /**

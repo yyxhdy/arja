@@ -1,0 +1,26 @@
+diff -w -r -u Lang50b/src/java/org/apache/commons/lang/time/FastDateFormat.java Lang50b_Patch/src/java/org/apache/commons/lang/time/FastDateFormat.java
+--- Lang50b/src/java/org/apache/commons/lang/time/FastDateFormat.java	2019-03-31 14:18:49.000000000 -0400
++++ Lang50b_Patch/src/java/org/apache/commons/lang/time/FastDateFormat.java	2019-03-31 14:18:49.000000000 -0400
+@@ -287,7 +287,7 @@
+         }
+ 
+ 
+-        FastDateFormat format = (FastDateFormat) cDateInstanceCache.get(key);
++        FastDateFormat format = (FastDateFormat) cDateInstanceCache.get(cInstanceCache);
+         if (format == null) {
+             if (locale == null) {
+                 locale = Locale.getDefault();
+@@ -1724,11 +1724,8 @@
+ 
+             Pair key = (Pair)obj;
+ 
+-            return
+-                (mObj1 == null ?
+-                 key.mObj1 == null : mObj1.equals(key.mObj1)) &&
+-                (mObj2 == null ?
+-                 key.mObj2 == null : mObj2.equals(key.mObj2));
++            return (mObj1 == null ? key.mObj1 == null : cDefaultPattern.equals(key.mObj1))
++					&& (mObj2 == null ? key.mObj2 == null : mObj2.equals(key.mObj2));
+         }
+ 
+         /**

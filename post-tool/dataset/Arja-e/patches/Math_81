@@ -1,0 +1,11 @@
+diff -w -r -u Math81b/src/main/java/org/apache/commons/math/linear/EigenDecompositionImpl.java Math81b_Patch559/src/main/java/org/apache/commons/math/linear/EigenDecompositionImpl.java
+--- Math81b/src/main/java/org/apache/commons/math/linear/EigenDecompositionImpl.java	2019-03-31 14:22:24.000000000 -0400
++++ Math81b_Patch559/src/main/java/org/apache/commons/math/linear/EigenDecompositionImpl.java	2019-03-31 15:31:15.000000000 -0400
+@@ -1481,7 +1481,6 @@
+                         if (work[nn - 5]  >  work[nn - 7]) {
+                             return;
+                         }
+-                        b2 = work[nn - 5] / work[nn - 7];
+                         np = nn - 9;
+                     } else {
+                         np = nn - 2 * pingPong;

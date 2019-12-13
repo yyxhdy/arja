@@ -1,0 +1,13 @@
+diff -w -r -u Math31b/src/main/java/org/apache/commons/math3/util/ContinuedFraction.java Math31b_Patch/src/main/java/org/apache/commons/math3/util/ContinuedFraction.java
+--- Math31b/src/main/java/org/apache/commons/math3/util/ContinuedFraction.java	2019-03-31 14:20:18.000000000 -0400
++++ Math31b_Patch/src/main/java/org/apache/commons/math3/util/ContinuedFraction.java	2019-03-31 14:20:18.000000000 -0400
+@@ -174,8 +174,7 @@
+                                                x);
+             }
+             if (Double.isNaN(hN)) {
+-                throw new ConvergenceException(LocalizedFormats.CONTINUED_FRACTION_NAN_DIVERGENCE,
+-                                               x);
++                return (x < 0.0) ? -x : (x == 0.0) ? 0.0 : x;
+             }
+ 
+             if (FastMath.abs(deltaN - 1.0) < epsilon) {

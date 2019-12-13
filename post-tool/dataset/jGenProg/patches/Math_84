@@ -1,0 +1,16 @@
+diff -w -r -u Math84b/src/main/java/org/apache/commons/math/optimization/direct/MultiDirectional.java Math84b_Patch68/src/main/java/org/apache/commons/math/optimization/direct/MultiDirectional.java
+--- Math84b/src/main/java/org/apache/commons/math/optimization/direct/MultiDirectional.java	2017-03-21 00:06:23.000000000 +0800
++++ Math84b_Patch68/src/main/java/org/apache/commons/math/optimization/direct/MultiDirectional.java	2017-04-11 00:53:41.000000000 +0800
+@@ -87,12 +87,7 @@
+ 
+             // compute the contracted simplex
+             final RealPointValuePair contracted = evaluateNewSimplex(original, gamma, comparator);
+-            if (comparator.compare(contracted, best) < 0) {
+-                // accept the contracted simplex
+-
+-            // check convergence
+                 return;
+-            }
+ 
+         }
+ 

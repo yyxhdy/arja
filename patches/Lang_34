@@ -1,0 +1,21 @@
+diff -w -r -u Lang34b/src/main/java/org/apache/commons/lang3/builder/ToStringStyle.java Lang34b_Patch/src/main/java/org/apache/commons/lang3/builder/ToStringStyle.java
+--- Lang34b/src/main/java/org/apache/commons/lang3/builder/ToStringStyle.java	2019-03-31 14:18:12.000000000 -0400
++++ Lang34b_Patch/src/main/java/org/apache/commons/lang3/builder/ToStringStyle.java	2019-03-31 14:18:12.000000000 -0400
+@@ -145,7 +145,7 @@
+      * @return Set the registry of objects being traversed
+      */
+     static Map<Object, Object> getRegistry() {
+-        return REGISTRY.get() != null ? REGISTRY.get() : Collections.<Object, Object>emptyMap();
++        return REGISTRY.get();
+     }
+ 
+     /**
+@@ -161,6 +161,8 @@
+      */
+     static boolean isRegistered(Object value) {
+         Map<Object, Object> m = getRegistry();
++        if (!(m != null))
++			return false;
+         return m.containsKey(value);
+     }
+ 

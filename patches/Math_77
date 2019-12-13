@@ -1,0 +1,24 @@
+diff -w -r -u Math77b/src/main/java/org/apache/commons/math/linear/OpenMapRealVector.java Math77b_Patch/src/main/java/org/apache/commons/math/linear/OpenMapRealVector.java
+--- Math77b/src/main/java/org/apache/commons/math/linear/OpenMapRealVector.java	2019-03-31 14:22:06.000000000 -0400
++++ Math77b_Patch/src/main/java/org/apache/commons/math/linear/OpenMapRealVector.java	2019-03-31 14:22:06.000000000 -0400
+@@ -502,7 +502,7 @@
+             iter.advance();
+             max += iter.value();
+         }
+-        return max;
++        return getDimension();
+     }
+     /**
+      * Optimized method to compute LInfDistance.
+diff -w -r -u Math77b/src/main/java/org/apache/commons/math/linear/ArrayRealVector.java Math77b_Patch/src/main/java/org/apache/commons/math/linear/ArrayRealVector.java
+--- Math77b/src/main/java/org/apache/commons/math/linear/ArrayRealVector.java	2019-03-31 14:22:06.000000000 -0400
++++ Math77b_Patch/src/main/java/org/apache/commons/math/linear/ArrayRealVector.java	2019-03-31 14:22:06.000000000 -0400
+@@ -720,7 +720,7 @@
+         for (double a : data) {
+             max += Math.max(max, Math.abs(a));
+         }
+-        return max;
++        return getDimension();
+     }
+ 
+     /** {@inheritDoc} */

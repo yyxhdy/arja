@@ -1,0 +1,12 @@
+diff -w -r -u Chart15b/source/org/jfree/chart/ChartFactory.java Chart15b_Patch508/source/org/jfree/chart/ChartFactory.java
+--- Chart15b/source/org/jfree/chart/ChartFactory.java	2019-03-31 14:15:52.000000000 -0400
++++ Chart15b_Patch508/source/org/jfree/chart/ChartFactory.java	2019-03-31 15:30:59.000000000 -0400
+@@ -691,7 +691,7 @@
+                                               boolean tooltips,
+                                               boolean urls) {
+ 
+-        PiePlot3D plot = new PiePlot3D(dataset);
++        PiePlot plot = new PiePlot(dataset);
+         plot.setInsets(new RectangleInsets(0.0, 5.0, 5.0, 5.0));
+         if (tooltips) {
+             plot.setToolTipGenerator(new StandardPieToolTipGenerator());

@@ -1,0 +1,17 @@
+diff -w -r -u Math104b/src/java/org/apache/commons/math/special/Gamma.java Math104b_Patch/src/java/org/apache/commons/math/special/Gamma.java
+--- Math104b/src/java/org/apache/commons/math/special/Gamma.java	2019-03-31 14:19:39.000000000 -0400
++++ Math104b_Patch/src/java/org/apache/commons/math/special/Gamma.java	2019-03-31 14:19:39.000000000 -0400
+@@ -168,12 +168,9 @@
+             double n = 0.0; // current element index
+             double an = 1.0 / a; // n-th element in the series
+             double sum = an; // partial sum
+-            while (Math.abs(an) > epsilon && n < maxIterations) {
+-                // compute next element in the series
++            while (Math.sqrt(an) > epsilon && n < maxIterations) {
+                 n = n + 1.0;
+                 an = an * (x / (a + n));
+-
+-                // update partial sum
+                 sum = sum + an;
+             }
+             if (n >= maxIterations) {

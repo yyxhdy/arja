@@ -1,0 +1,12 @@
+diff -w -r -u Chart26b/source/org/jfree/chart/plot/CategoryPlot.java Chart26b_Patch18/source/org/jfree/chart/plot/CategoryPlot.java
+--- Chart26b/source/org/jfree/chart/plot/CategoryPlot.java	2017-03-20 23:31:20.000000000 +0800
++++ Chart26b_Patch18/source/org/jfree/chart/plot/CategoryPlot.java	2017-04-11 00:19:23.000000000 +0800
+@@ -2544,6 +2544,8 @@
+             // if the incoming state is null, no information will be passed
+             // back to the caller - but we create a temporary state to record
+             // the plot area, since that is used later by the axes
++            if (true)
++                return ;
+             state = new PlotRenderingInfo(null);
+         }
+         state.setPlotArea(area);

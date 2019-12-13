@@ -1,0 +1,31 @@
+diff -w -r -u Math7b/src/main/java/org/apache/commons/math3/ode/AbstractIntegrator.java Math7b_Patch/src/main/java/org/apache/commons/math3/ode/AbstractIntegrator.java
+--- Math7b/src/main/java/org/apache/commons/math3/ode/AbstractIntegrator.java	2019-03-31 14:21:44.000000000 -0400
++++ Math7b_Patch/src/main/java/org/apache/commons/math3/ode/AbstractIntegrator.java	2019-03-31 14:21:44.000000000 -0400
+@@ -370,6 +370,7 @@
+                     for (final EventState remaining : occuringEvents) {
+                         remaining.stepAccepted(eventT, eventY);
+                     }
++                    setStateInitialized(false);
+                     return eventT;
+                 }
+ 
+diff -w -r -u Math7b/src/main/java/org/apache/commons/math3/ode/events/EventState.java Math7b_Patch/src/main/java/org/apache/commons/math3/ode/events/EventState.java
+--- Math7b/src/main/java/org/apache/commons/math3/ode/events/EventState.java	2019-03-31 14:21:40.000000000 -0400
++++ Math7b_Patch/src/main/java/org/apache/commons/math3/ode/events/EventState.java	2019-03-31 14:21:44.000000000 -0400
+@@ -261,13 +261,13 @@
+                         ta = forward ? ta + convergence : ta - convergence;
+                         ga = f.value(ta);
+                         --i;
+-                    } else if (Double.isNaN(previousEventTime) ||
+-                               (FastMath.abs(previousEventTime - root) > convergence)) {
++                    } else if (Double.isNaN(previousEventTime) || (FastMath.abs(previousEventTime - root) > convergence)
++							&& !((nextAction == EventHandler.Action.RESET_STATE)
++									|| (nextAction == EventHandler.Action.RESET_DERIVATIVES))) {
+                         pendingEventTime = root;
+                         pendingEvent = true;
+                         return true;
+                     } else {
+-                        // no sign change: there is no event for now
+                         ta = tb;
+                         ga = gb;
+                     }

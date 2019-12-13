@@ -1,0 +1,11 @@
+diff -w -r -u Math81b/src/main/java/org/apache/commons/math/linear/EigenDecompositionImpl.java Math81b_Patch62/src/main/java/org/apache/commons/math/linear/EigenDecompositionImpl.java
+--- Math81b/src/main/java/org/apache/commons/math/linear/EigenDecompositionImpl.java	2017-03-21 00:04:22.000000000 +0800
++++ Math81b_Patch62/src/main/java/org/apache/commons/math/linear/EigenDecompositionImpl.java	2017-04-11 00:50:46.000000000 +0800
+@@ -1477,7 +1477,6 @@
+                     int np;
+                     if (dMin == dN) {
+                         gam = dN;
+-                        a2 = 0.0;
+                         if (work[nn - 5]  >  work[nn - 7]) {
+                             return;
+                         }

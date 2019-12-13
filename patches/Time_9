@@ -1,0 +1,19 @@
+diff -w -r -u Time9b/src/main/java/org/joda/time/DateTimeZone.java Time9b_Patch/src/main/java/org/joda/time/DateTimeZone.java
+--- Time9b/src/main/java/org/joda/time/DateTimeZone.java	2019-03-31 14:23:23.000000000 -0400
++++ Time9b_Patch/src/main/java/org/joda/time/DateTimeZone.java	2019-03-31 14:23:23.000000000 -0400
+@@ -281,6 +281,15 @@
+      */
+     public static DateTimeZone forOffsetMillis(int millisOffset) {
+         String id = printOffset(millisOffset);
++        if (id.startsWith("+") || id.startsWith("-")) {
++			int offset = parseOffset(id);
++			if (offset == 0L) {
++				return DateTimeZone.UTC;
++			} else {
++				id = printOffset(offset);
++				return fixedOffsetZone(id, offset);
++			}
++		}
+         return fixedOffsetZone(id, millisOffset);
+     }
+ 

@@ -98,7 +98,7 @@ public class TestFilter {
 
 	private static boolean canFiltered(String test)
 			throws Exception {
-	//	System.out.println(test);
+//		System.out.println(test);
 		final MemoryClassLoader loader = new MemoryClassLoader(Util.getURLs(binJavaDir, binTestDir, dependences));
 		
 		final IRuntime runtime = new LoggerRuntime();

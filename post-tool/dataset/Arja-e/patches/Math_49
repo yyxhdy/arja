@@ -1,0 +1,11 @@
+diff -w -r -u Math49b/src/main/java/org/apache/commons/math/util/OpenIntToDoubleHashMap.java Math49b_Patch548/src/main/java/org/apache/commons/math/util/OpenIntToDoubleHashMap.java
+--- Math49b/src/main/java/org/apache/commons/math/util/OpenIntToDoubleHashMap.java	2019-03-31 14:20:49.000000000 -0400
++++ Math49b_Patch548/src/main/java/org/apache/commons/math/util/OpenIntToDoubleHashMap.java	2019-03-31 15:31:12.000000000 -0400
+@@ -396,7 +396,6 @@
+         final double previous = values[index];
+         values[index] = missingEntries;
+         --size;
+-        ++count;
+         return previous;
+     }
+ 

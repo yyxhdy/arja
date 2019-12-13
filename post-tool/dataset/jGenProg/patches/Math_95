@@ -1,0 +1,12 @@
+diff -w -r -u Math95b/src/java/org/apache/commons/math/distribution/FDistributionImpl.java Math95b_Patch75/src/java/org/apache/commons/math/distribution/FDistributionImpl.java
+--- Math95b/src/java/org/apache/commons/math/distribution/FDistributionImpl.java	2017-03-21 00:10:31.000000000 +0800
++++ Math95b_Patch75/src/java/org/apache/commons/math/distribution/FDistributionImpl.java	2017-04-11 00:58:15.000000000 +0800
+@@ -145,7 +145,7 @@
+         double d = getDenominatorDegreesOfFreedom();
+             // use mean
+             ret = d / (d - 2.0);
+-        return ret;
++        return numeratorDegreesOfFreedom;
+     }
+     
+     /**

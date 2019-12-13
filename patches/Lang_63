@@ -1,0 +1,12 @@
+diff -w -r -u Lang63b/src/java/org/apache/commons/lang/time/DurationFormatUtils.java Lang63b_Patch/src/java/org/apache/commons/lang/time/DurationFormatUtils.java
+--- Lang63b/src/java/org/apache/commons/lang/time/DurationFormatUtils.java	2019-03-31 14:19:31.000000000 -0400
++++ Lang63b_Patch/src/java/org/apache/commons/lang/time/DurationFormatUtils.java	2019-03-31 14:19:31.000000000 -0400
+@@ -435,7 +435,7 @@
+         int startValue = start.get(field);
+         if (endValue < startValue) {
+             int newdiff = startValue - endValue;
+-            end.add( field, newdiff );
++            end.add(newdiff, newdiff);
+             return newdiff;
+         } else {
+             return 0;

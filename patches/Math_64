@@ -1,0 +1,22 @@
+diff -w -r -u Math64b/src/main/java/org/apache/commons/math/optimization/general/LevenbergMarquardtOptimizer.java Math64b_Patch/src/main/java/org/apache/commons/math/optimization/general/LevenbergMarquardtOptimizer.java
+--- Math64b/src/main/java/org/apache/commons/math/optimization/general/LevenbergMarquardtOptimizer.java	2019-03-31 14:21:28.000000000 -0400
++++ Math64b_Patch/src/main/java/org/apache/commons/math/optimization/general/LevenbergMarquardtOptimizer.java	2019-03-31 14:21:28.000000000 -0400
+@@ -428,6 +428,7 @@
+                         int pj = permutation[j];
+                         point[pj] = oldX[pj];
+                     }
++                    current = new VectorialPointValuePair(point, objective);
+                     tmpVec    = residuals;
+                     residuals = oldRes;
+                     oldRes    = tmpVec;
+@@ -547,6 +548,10 @@
+ 
+         // calculate an upper bound, paru, for the zero of the function
+         sum2 = 0;
++        for (int k = 0; k < solvedCols; ++k) {
++			int pk = permutation[k];
++			jacobian[k][pk] = diagR[pk];
++		}
+         for (int j = 0; j < solvedCols; ++j) {
+             int pj = permutation[j];
+             double sum = 0;

@@ -1,0 +1,12 @@
+diff -w -r -u Chart13b/source/org/jfree/chart/block/BorderArrangement.java Chart13b_Patch/source/org/jfree/chart/block/BorderArrangement.java
+--- Chart13b/source/org/jfree/chart/block/BorderArrangement.java	2019-03-31 14:15:43.000000000 -0400
++++ Chart13b_Patch/source/org/jfree/chart/block/BorderArrangement.java	2019-03-31 14:15:43.000000000 -0400
+@@ -447,7 +447,7 @@
+                     LengthConstraintType.RANGE, h[2], null,
+                     LengthConstraintType.FIXED);
+             Size2D size = this.leftBlock.arrange(g2, c3);
+-            w[2] = size.width;
++            w[4] = size.width;
+         }
+         h[3] = h[2];
+         if (this.rightBlock != null) {

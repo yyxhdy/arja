@@ -1,0 +1,12 @@
+diff -w -r -u Chart15b/source/org/jfree/chart/JFreeChart.java Chart15b_Patch12/source/org/jfree/chart/JFreeChart.java
+--- Chart15b/source/org/jfree/chart/JFreeChart.java	2017-03-20 23:23:14.000000000 +0800
++++ Chart15b_Patch12/source/org/jfree/chart/JFreeChart.java	2017-04-11 00:13:59.000000000 +0800
+@@ -1216,7 +1216,7 @@
+         if (info != null) {
+             plotInfo = info.getPlotInfo();
+         }
+-        this.plot.draw(g2, plotArea, anchor, null, plotInfo);
++        fireChartChanged();
+ 
+         g2.setClip(savedClip);
+ 

@@ -1,0 +1,11 @@
+diff -w -r -u Math73b/src/main/java/org/apache/commons/math/analysis/solvers/BrentSolver.java Math73b_Patch/src/main/java/org/apache/commons/math/analysis/solvers/BrentSolver.java
+--- Math73b/src/main/java/org/apache/commons/math/analysis/solvers/BrentSolver.java	2019-03-31 14:21:56.000000000 -0400
++++ Math73b_Patch/src/main/java/org/apache/commons/math/analysis/solvers/BrentSolver.java	2019-03-31 14:21:56.000000000 -0400
+@@ -134,6 +134,7 @@
+         }
+ 
+ 
++        verifyBracketing(min, max, f);
+         // full Brent algorithm starting with provided initial guess
+         return solve(f, min, yMin, max, yMax, initial, yInitial);
+ 

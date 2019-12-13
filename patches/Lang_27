@@ -1,0 +1,12 @@
+diff -w -r -u Lang27b/src/main/java/org/apache/commons/lang3/math/NumberUtils.java Lang27b_Patch/src/main/java/org/apache/commons/lang3/math/NumberUtils.java
+--- Lang27b/src/main/java/org/apache/commons/lang3/math/NumberUtils.java	2019-03-31 14:18:01.000000000 -0400
++++ Lang27b_Patch/src/main/java/org/apache/commons/lang3/math/NumberUtils.java	2019-03-31 14:18:01.000000000 -0400
+@@ -486,6 +486,8 @@
+             mant = str.substring(0, decPos);
+         } else {
+             if (expPos > -1) {
++                if (!(expPos <= str.length()))
++					throw new java.lang.NumberFormatException();
+                 mant = str.substring(0, expPos);
+             } else {
+                 mant = str;

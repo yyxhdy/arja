@@ -1,0 +1,12 @@
+diff -w -r -u Time24b/src/main/java/org/joda/time/LocalDate.java Time24b_Patch578/src/main/java/org/joda/time/LocalDate.java
+--- Time24b/src/main/java/org/joda/time/LocalDate.java	2019-03-31 14:23:17.000000000 -0400
++++ Time24b_Patch578/src/main/java/org/joda/time/LocalDate.java	2019-03-31 15:31:24.000000000 -0400
+@@ -573,7 +573,7 @@
+         if (partial instanceof LocalDate) {
+             LocalDate other = (LocalDate) partial;
+             if (iChronology.equals(other.iChronology)) {
+-                return iLocalMillis == other.iLocalMillis;
++                return iLocalMillis >= other.iLocalMillis;
+             }
+         }
+         return super.equals(partial);

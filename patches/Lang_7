@@ -1,0 +1,12 @@
+diff -w -r -u Lang7b/src/main/java/org/apache/commons/lang3/math/NumberUtils.java Lang7b_Patch/src/main/java/org/apache/commons/lang3/math/NumberUtils.java
+--- Lang7b/src/main/java/org/apache/commons/lang3/math/NumberUtils.java	2019-03-31 14:19:36.000000000 -0400
++++ Lang7b_Patch/src/main/java/org/apache/commons/lang3/math/NumberUtils.java	2019-03-31 14:19:36.000000000 -0400
+@@ -450,7 +450,7 @@
+             throw new NumberFormatException("A blank string is not a valid number");
+         }  
+         if (str.startsWith("--")) {
+-            return null;
++            throw new NumberFormatException("A blank string is not a valid number");
+         }
+         if (str.startsWith("0x") || str.startsWith("-0x") || str.startsWith("0X") || str.startsWith("-0X")) {
+             int hexDigits = str.length() - 2; // drop 0x

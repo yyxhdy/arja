@@ -1,0 +1,12 @@
+diff -w -r -u Time20b/src/main/java/org/joda/time/format/DateTimeFormatterBuilder.java Time20b_Patch577/src/main/java/org/joda/time/format/DateTimeFormatterBuilder.java
+--- Time20b/src/main/java/org/joda/time/format/DateTimeFormatterBuilder.java	2019-03-31 14:23:14.000000000 -0400
++++ Time20b_Patch577/src/main/java/org/joda/time/format/DateTimeFormatterBuilder.java	2019-03-31 15:31:23.000000000 -0400
+@@ -2540,7 +2540,7 @@
+         public int parseInto(DateTimeParserBucket bucket, String text, int position) {
+             String str = text.substring(position);
+             for (String id : ALL_IDS) {
+-                if (str.startsWith(id)) {
++                if (str.equalsIgnoreCase(id)) {
+                     bucket.setZone(DateTimeZone.forID(id));
+                     return position + id.length();
+                 }

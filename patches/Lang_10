@@ -1,0 +1,12 @@
+diff -w -r -u Lang10b/src/main/java/org/apache/commons/lang3/time/FastDateParser.java Lang10b_Patch/src/main/java/org/apache/commons/lang3/time/FastDateParser.java
+--- Lang10b/src/main/java/org/apache/commons/lang3/time/FastDateParser.java	2019-03-31 14:17:19.000000000 -0400
++++ Lang10b_Patch/src/main/java/org/apache/commons/lang3/time/FastDateParser.java	2019-03-31 14:17:19.000000000 -0400
+@@ -307,7 +307,7 @@
+             if(Character.isWhitespace(c)) {
+                 if(!wasWhite) {
+                     wasWhite= true;
+-                    regex.append("\\s*+");
++                    regex.append(c);
+                 }
+                 continue;
+             }

@@ -1,0 +1,11 @@
+diff -w -r -u Lang59b/src/java/org/apache/commons/lang/text/StrBuilder.java Lang59b_Patch/src/java/org/apache/commons/lang/text/StrBuilder.java
+--- Lang59b/src/java/org/apache/commons/lang/text/StrBuilder.java	2019-03-31 14:19:15.000000000 -0400
++++ Lang59b_Patch/src/java/org/apache/commons/lang/text/StrBuilder.java	2019-03-31 14:19:15.000000000 -0400
+@@ -880,6 +880,7 @@
+             ensureCapacity(size + width);
+             String str = (obj == null ? getNullText() : obj.toString());
+             int strLen = str.length();
++            ensureCapacity(size + 4);
+             if (strLen >= width) {
+                 str.getChars(0, strLen, buffer, size);
+             } else {

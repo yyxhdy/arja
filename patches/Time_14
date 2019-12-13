@@ -1,0 +1,12 @@
+diff -w -r -u Time14b/src/main/java/org/joda/time/MonthDay.java Time14b_Patch/src/main/java/org/joda/time/MonthDay.java
+--- Time14b/src/main/java/org/joda/time/MonthDay.java	2019-03-31 14:23:07.000000000 -0400
++++ Time14b_Patch/src/main/java/org/joda/time/MonthDay.java	2019-03-31 14:23:08.000000000 -0400
+@@ -516,7 +516,7 @@
+             return this;
+         }
+         int[] newValues = getValues();
+-        newValues = getField(index).add(this, index, newValues, amount);
++        newValues = getField(index).addWrapPartial(this, index, newValues, amount);
+         return new MonthDay(this, newValues);
+     }
+ 

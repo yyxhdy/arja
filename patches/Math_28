@@ -1,0 +1,12 @@
+diff -w -r -u Math28b/src/main/java/org/apache/commons/math3/optimization/linear/SimplexSolver.java Math28b_Patch/src/main/java/org/apache/commons/math3/optimization/linear/SimplexSolver.java
+--- Math28b/src/main/java/org/apache/commons/math3/optimization/linear/SimplexSolver.java	2019-03-31 14:20:05.000000000 -0400
++++ Math28b_Patch/src/main/java/org/apache/commons/math3/optimization/linear/SimplexSolver.java	2019-03-31 14:20:05.000000000 -0400
+@@ -142,7 +142,7 @@
+                     for (; i < tableau.getWidth() - 1 && minRow != row; i++) {
+                         if (row == tableau.getBasicRow(i)) {
+                             if (i < minIndex) {
+-                                minIndex = i;
++                                minIndex = row;
+                                 minRow = row;
+                             }
+                         }

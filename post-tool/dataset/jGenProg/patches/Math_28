@@ -1,0 +1,11 @@
+diff -w -r -u Math28b/src/main/java/org/apache/commons/math3/optimization/linear/SimplexSolver.java Math28b_Patch32/src/main/java/org/apache/commons/math3/optimization/linear/SimplexSolver.java
+--- Math28b/src/main/java/org/apache/commons/math3/optimization/linear/SimplexSolver.java	2017-03-20 23:48:41.000000000 +0800
++++ Math28b_Patch32/src/main/java/org/apache/commons/math3/optimization/linear/SimplexSolver.java	2017-04-11 00:27:18.000000000 +0800
+@@ -121,7 +121,6 @@
+                         int column = i + tableau.getArtificialVariableOffset();
+                         final double entry = tableau.getEntry(row, column);
+                         if (Precision.equals(entry, 1d, maxUlps) && row.equals(tableau.getBasicRow(column))) {
+-                            return row;
+                         }
+                     }
+                 }

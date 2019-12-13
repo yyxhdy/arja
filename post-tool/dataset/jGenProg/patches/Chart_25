@@ -1,0 +1,11 @@
+diff -w -r -u Chart25b/source/org/jfree/data/statistics/DefaultStatisticalCategoryDataset.java Chart25b_Patch15/source/org/jfree/data/statistics/DefaultStatisticalCategoryDataset.java
+--- Chart25b/source/org/jfree/data/statistics/DefaultStatisticalCategoryDataset.java	2017-03-20 23:29:10.000000000 +0800
++++ Chart25b_Patch15/source/org/jfree/data/statistics/DefaultStatisticalCategoryDataset.java	2017-04-11 00:17:21.000000000 +0800
+@@ -298,7 +298,6 @@
+                     Comparable rowKey, Comparable columnKey) {
+         MeanAndStandardDeviation item = new MeanAndStandardDeviation(
+                 mean, standardDeviation);
+-        this.data.addObject(item, rowKey, columnKey);
+         double m = 0.0;
+         double sd = 0.0;
+         if (mean != null) {

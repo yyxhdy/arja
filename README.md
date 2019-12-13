@@ -1,19 +1,29 @@
-# ARJA
+# ARJA-e
 
-ARJA is a new genetic programming (GP) based program repair approach for Java. 
-ARJA is mainly characterized by a novel patch representation for GP, multi-objective search, 
-test filtering procedure, type matching and several strategies to reduce the search space.
-This tool provides the implementation of ARJA along with three previous notable repair approaches 
-(i.e., GenProg, RSRepair and Kali).
-
-If you use ARJA for academic purpose, please include the following citation:
-
-Yuan Yuan and Wolfgang Banzhaf. 2018. ARJA: Automated repair of Java programs via multi-objective genetic
-programming. IEEE Transactions on Software Engineering (2018). https://doi.org/10.1109/TSE.2018.2874648
+ARJA-e is a new evolutionary repair system for Java. Compared to its 
+predecessor ARJA (https://github.com/yyxhdy/arja), ARJA-e includes the following new features:
+1. ARJA-e exploits a number of repair templates in addition to just exploiting statement-level 
+redundancy assumption. So besides complex statement-level transformations,
+ARJA-e can also conduct more targeted transformations (e.g., null
+pointer check) or finer-grained transformations than statement-level (e.g., method name replacement), thereby making it 
+have potential to fix more bugs. 
+2. In ARJA-e, the statements
+for replacement and statements for insertion are distinguished, and two context-related metrics
+are introduced in order to select the most promising replacement and insertion statements respectively.
+3. In ARJA-e, the repair templates is used in a novel way. That is, various template-based edits
+(usually occurring at the expression level) are converted into two types of statement-level edits, so that all
+kinds of edits can be decomposed into the same partial information, making it possible to
+encode patches with a unified lower-granularity representation.
+4. A new lower-granularity patch representation is introduced in ARJA-e, which is characterized by the
+decoupling of statements for replacement and statements for insertion. So GP can 
+evolve the two kinds of statements separately.
+5. ARJA-e incorporates a finer-grained fitness function that can capture how close a program variant
+satisfies each assertion in the unit test cases, which is expected to provide smoother gradients
+for GP to traverse to find a solution.
+6. ARJA-e includes a post-processing tool that can help to alleviate patch overfitting problem. 
 
 
 ## Requirements
-
 1. Java JDK 1.7
 2. Mac OS X or Linux
 
@@ -21,73 +31,25 @@ programming. IEEE Transactions on Software Engineering (2018). https://doi.org/1
 
 ### Set Up
 
-First, clone ARJA to the local computer:
+First, clone ARJA-e to the local computer:
 ```
-$ git clone https://github.com/yyxhdy/arja
+$ git clone https://github.com/ywmsu/arja-e
 ```
-There are four subdirectories in the root directory of the tool. 
-1. ../arja/src :  the source code of the tool
-2. ../arja/bin :  the compiled classes of the tool
-3. ../arja/lib :  the dependences of the tool (including a number of .jar files)
-4. ../arja/external :  the external project
-
-### Minimum Usage
-Enter into the root directory of the tool:
-```
-$ cd arja
-```
-
-Confirm that the current version of Java is JDK 1.7 and use the following command to run:
-```
-$ java -cp lib/*:bin us.msu.cse.repair.Main Arja -DsrcJavaDir path_to_directory_of_src_buggy \
-                                                 -DbinJavaDir path_to_directory_of_binary_source_buggy \
-                                                 -DbinTestDir path_to_directory_of_binary_test_buggy \
-                                                 -Ddependences paths_to_dependences_buggy 
-```
-"Arja" means that the repair approach ARJA is run. Alternatively, "GenProg", "RSRepair" and "Kali" can 
-be used. Moreover, at least four parameters related with the buggy program are required.
-1. -DsrcJavaDir  :  the path to the root directory of the source code 
-2. -DbinJavaDir  :  the path to the root directory of all the compiled classes of source code
-3. -DbinTestDir  :  the path to the root directory of all the compiled classes of test code
-4. -Ddependences :  the paths to the dependences (jar files). If more than one, separated by ":"
-
-In the above command, "path_to_directory_of_src_buggy" etc should be replaced with the actual 
-absolute paths (the tool currently only supports absolute paths). All the test-suite adequate
-patches found by the approach are saved in the directory arja/patches_$id$ by default. $id$ is a randomly 
-generated string containing four characters. 
+There are four subdirectories in the root directory of this system:
+1. ../arja-e/src :  the source code of the core of the system
+2. ../arja-e/lib :  the dependences of the core of the system (including a number of .jar files)
+3. ../arja-e/external :  the external project that is used for the execution of test cases
+4. ../arja-e/post-tool : the post-processing tool for alleviating patch overfitting 
+5. ../arja-e/patches :  the obtained patches on 224 real bugs in Defects4J
 
 
-### Advanced Usage
-
-The tool provides the other parameters to configure the repair approaches. The following command
-can be used to list all the parameters (including the description) available for each repair approach.
+### Build
+The users should compile the core of the system first. Enter into the root directory of the system:
 ```
-$ java -cp lib/*:bin us.msu.cse.repair.Main -listParameters
+$ cd arja-e
 ```
 
-The following is an example to use more than four parameters:
-```
-$ java -cp lib/*:bin us.msu.cse.repair.Main Arja -DsrcJavaDir path_to_directory_of_src_buggy \
-                                                 -DbinJavaDir path_to_directory_of_binary_source_buggy \
-                                                 -DbinTestDir path_to_directory_of_binary_test_buggy \
-                                                 -Ddependences paths_to_dependences_buggy \
-                                                 -DpopulationSize value_of_population_size \
-                                                 -DgzoltarDataDir path_to_directory_of_Gzoltar_output \
-```
-In this command, the parameter -DpopulationSize sets the population size of ARJA to "value_of_population_size";
-the parameter -DgzoltarDataDir specifies the path to the root directory of the Gzoltar 1.6.2 output (see http://www.gzoltar.com/command-line.html).
-
-
-## How to Build
-
-The users can also compile the tool themselves. 
-First, enter into the root directory of the tool and clean the original binaries:
-```
-$ cd arja
-$ rm -r bin
-```
-
-Then, compile the source code of the tool, and the compiled classes are saved in the directory "bin":
+Then, compile the source code of the core of the system, and the compiled classes are saved in the directory "bin":
 ```
 $ mkdir bin
 $ javac -cp lib/*: -d bin $(find src -name '*.java')
@@ -96,21 +58,62 @@ $ javac -cp lib/*: -d bin $(find src -name '*.java')
 Similarly, the external project is compiled as follows:
 ```
 $ cd external
-$ rm -r bin
 $ mkdir bin
 $ javac -cp lib/*: -d bin $(find src -name '*.java')
 ```
 
+### Minimum Usage
+Enter into the root directory of the system:
+```
+$ cd arja-e
+```
+Confirm that the current version of Java is JDK 1.7 and use the following command to run:
+```
+$ java -cp lib/*:bin us.msu.cse.repair.Main ArjaE -DsrcJavaDir path_to_directory_of_src_buggy \
+						-DbinJavaDir path_to_directory_of_binary_source_buggy \
+						-DbinTestDir path_to_directory_of_binary_test_buggy �\
+						-Ddependences paths_to_dependences_buggy 
+```
+"ArjaE" means that the repair approach ARJA-e is run. Alternatively, "Arja", "GenProg", "RSRepair" and "Kali" can 
+be used. Moreover, at least four parameters related with the buggy program are required.
+1. -DsrcJavaDir  :� the path to the root directory of the source code 
+2. -DbinJavaDir  : the path to the root directory of all the compiled classes of source code
+3. -DbinTestDir  :  the path to the root directory of all the compiled classes of test code
+4. -Ddependences :  the paths to the the dependences (jar files). If more than one, separated by ":"
+
+In the above command, "path_to_directory_of_src_buggy" etc should be replaced with the actual 
+absolute paths (the system currently only supports absolute paths). All the plausible 
+patches found by the approach are saved in the directory arja-e/patches_$id$ by default. $id$ is a randomly 
+generated string containing four characters. 
+
+
+### Advanced Usage
+
+The system provides the other parameters to configure the repair approaches. The following command
+can be used to list all the parameters (including the description) available for each repair approach.
+```
+$ java -cp lib/*:bin us.msu.cse.repair.Main -listParameters
+```
+
+The following is an example to use more than four parameters:
+```
+$ java -cp lib/*:bin us.msu.cse.repair.Main ArjaE -DsrcJavaDir path_to_directory_of_src_buggy \
+						-DbinJavaDir path_to_directory_of_binary_source_buggy \
+						-DbinTestDir path_to_directory_of_binary_test_buggy�\
+						-Ddependences paths_to_dependences_buggy \
+						-DpopulationSize value_of_population_size \
+						-DgzoltarDataDir path_to_directory_of_Gzoltar_output \
+```
+In this command, the parameter -DpopulationSize sets the population size of ARJA-e to "value_of_population_size";
+the parameter -DgzoltarDataDir specifies the path to the root directory of the Gzoltar 1.6.2 output (see http://www.gzoltar.com/command-line.html).
+
+
 ## Evaluation
-Our implemented approaches in this tool, including ARJA, GenProg, RSRepair and Kali, have been
-evaluated on 224 bugs in Defects4J (https://github.com/rjust/defects4j). 
+ARJA-e has been evaluated on 224 real bugs in Defects4J v1.0.1 (https://github.com/rjust/defects4j/tree/v1.0.1). 
+The results indicated that ARJA-e can fix 106 bugs in terms of passing all the test cases, and it can correctly fix
+39 bugs (at least) according to the patches ranked first. The patches ranked first for the 106 bugs are available in the 
+directory "../arja-e/patches". 
 
-The test-suite adequate patches generated by these repair approaches are available at 
-http://github.com/yyxhdy/defects4j-patches
-
-We manually evaluate the correctness of the patches generated by ARJA. The detailed analysis of
-the patch correctness is available at
-https://github.com/yyxhdy/arja-supplemental
 
 ## Contact
 For questions and feedback, please contact yyxhdy@gmail.com

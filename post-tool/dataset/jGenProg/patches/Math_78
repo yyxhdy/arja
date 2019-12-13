@@ -1,0 +1,11 @@
+diff -w -r -u Math78b/src/main/java/org/apache/commons/math/ode/events/EventState.java Math78b_Patch56/src/main/java/org/apache/commons/math/ode/events/EventState.java
+--- Math78b/src/main/java/org/apache/commons/math/ode/events/EventState.java	2017-03-21 00:02:23.000000000 +0800
++++ Math78b_Patch56/src/main/java/org/apache/commons/math/ode/events/EventState.java	2017-04-11 00:47:55.000000000 +0800
+@@ -282,7 +282,6 @@
+     public void stepAccepted(final double t, final double[] y)
+         throws EventException {
+ 
+-        t0 = t;
+         g0 = handler.g(t, y);
+ 
+         if (pendingEvent) {

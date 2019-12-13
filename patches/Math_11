@@ -1,0 +1,15 @@
+diff -w -r -u Math11b/src/main/java/org/apache/commons/math3/distribution/MultivariateNormalDistribution.java Math11b_Patch/src/main/java/org/apache/commons/math3/distribution/MultivariateNormalDistribution.java
+--- Math11b/src/main/java/org/apache/commons/math3/distribution/MultivariateNormalDistribution.java	2019-03-31 14:19:43.000000000 -0400
++++ Math11b_Patch/src/main/java/org/apache/commons/math3/distribution/MultivariateNormalDistribution.java	2019-03-31 14:19:43.000000000 -0400
+@@ -180,9 +180,8 @@
+             throw new DimensionMismatchException(vals.length, dim);
+         }
+ 
+-        return FastMath.pow(2 * FastMath.PI, -dim / 2) *
+-            FastMath.pow(covarianceMatrixDeterminant, -0.5) *
+-            getExponentTerm(vals);
++        return FastMath.pow(2 * FastMath.PI, -dim / 2D) * FastMath.pow(covarianceMatrixDeterminant, -0.5)
++				* getExponentTerm(vals);
+     }
+ 
+     /**

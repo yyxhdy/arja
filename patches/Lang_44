@@ -1,0 +1,25 @@
+diff -w -r -u Lang44b/src/java/org/apache/commons/lang/NumberUtils.java Lang44b_Patch/src/java/org/apache/commons/lang/NumberUtils.java
+--- Lang44b/src/java/org/apache/commons/lang/NumberUtils.java	2019-03-31 14:18:33.000000000 -0400
++++ Lang44b_Patch/src/java/org/apache/commons/lang/NumberUtils.java	2019-03-31 14:18:33.000000000 -0400
+@@ -190,16 +190,17 @@
+             switch (lastChar) {
+                 case 'l' :
+                 case 'L' :
+-                    if (dec == null
+-                        && exp == null
++				{
++					if (!(0 < numeric.length()))
++						throw new java.lang.NumberFormatException();
++					if (dec == null && exp == null
+                         && (numeric.charAt(0) == '-' && isDigits(numeric.substring(1)) || isDigits(numeric))) {
+                         try {
+                             return createLong(numeric);
+                         } catch (NumberFormatException nfe) {
+-                            //Too big for a long
+                         }
+                         return createBigInteger(numeric);
+-
++					}
+                     }
+                     throw new NumberFormatException(val + " is not a valid number.");
+                 case 'f' :

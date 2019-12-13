@@ -1,0 +1,12 @@
+diff -w -r -u Chart26b/source/org/jfree/chart/plot/CategoryPlot.java Chart26b_Patch512/source/org/jfree/chart/plot/CategoryPlot.java
+--- Chart26b/source/org/jfree/chart/plot/CategoryPlot.java	2019-03-31 14:16:29.000000000 -0400
++++ Chart26b_Patch512/source/org/jfree/chart/plot/CategoryPlot.java	2019-03-31 15:31:01.000000000 -0400
+@@ -2535,7 +2535,7 @@
+         // if the plot area is too small, just return...
+         boolean b1 = (area.getWidth() <= MINIMUM_WIDTH_TO_DRAW);
+         boolean b2 = (area.getHeight() <= MINIMUM_HEIGHT_TO_DRAW);
+-        if (b1 || b2) {
++        if (b1 || b2 || this.foregroundDomainMarkers != null) {
+             return;
+         }
+ 

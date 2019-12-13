@@ -1,0 +1,12 @@
+diff -w -r -u Lang55b/src/java/org/apache/commons/lang/time/StopWatch.java Lang55b_Patch528/src/java/org/apache/commons/lang/time/StopWatch.java
+--- Lang55b/src/java/org/apache/commons/lang/time/StopWatch.java	2019-03-31 14:19:00.000000000 -0400
++++ Lang55b_Patch528/src/java/org/apache/commons/lang/time/StopWatch.java	2019-03-31 15:31:06.000000000 -0400
+@@ -115,8 +115,6 @@
+         if(this.runningState != STATE_RUNNING && this.runningState != STATE_SUSPENDED) {
+             throw new IllegalStateException("Stopwatch is not running. ");
+         }
+-            stopTime = System.currentTimeMillis();
+-        this.runningState = STATE_STOPPED;
+     }
+ 
+     /**

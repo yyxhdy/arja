@@ -1,0 +1,30 @@
+diff -w -r -u Lang1b/src/main/java/org/apache/commons/lang3/math/NumberUtils.java Lang1b_Patch/src/main/java/org/apache/commons/lang3/math/NumberUtils.java
+--- Lang1b/src/main/java/org/apache/commons/lang3/math/NumberUtils.java	2019-03-31 14:17:13.000000000 -0400
++++ Lang1b_Patch/src/main/java/org/apache/commons/lang3/math/NumberUtils.java	2019-03-31 14:17:13.000000000 -0400
+@@ -454,17 +454,25 @@
+         if (StringUtils.isBlank(str)) {
+             throw new NumberFormatException("A blank string is not a valid number");
+         }
++        try {
++			return createInteger(str);
++		} catch (final NumberFormatException nfe) {
++		}
+         // Need to deal with all possible hex prefixes here
+         final String[] hex_prefixes = {"0x", "0X", "-0x", "-0X", "#", "-#"};
+         int pfxLen = 0;
+         for(final String pfx : hex_prefixes) {
+             if (str.startsWith(pfx)) {
++                try {
++					return createLong(str);
++				} catch (final NumberFormatException nfe) {
++				}
+                 pfxLen += pfx.length();
+                 break;
+             }
+         }
+         if (pfxLen > 0) { // we have a hex number
+-            final int hexDigits = str.length() - pfxLen;
++            final int hexDigits = str.length() + pfxLen;
+             if (hexDigits > 16) { // too many for Long
+                 return createBigInteger(str);
+             }

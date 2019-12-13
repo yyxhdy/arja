@@ -1,0 +1,23 @@
+diff -w -r -u Math32b/src/main/java/org/apache/commons/math3/geometry/euclidean/twod/PolygonsSet.java Math32b_Patch34/src/main/java/org/apache/commons/math3/geometry/euclidean/twod/PolygonsSet.java
+--- Math32b/src/main/java/org/apache/commons/math3/geometry/euclidean/twod/PolygonsSet.java	2017-03-20 23:49:36.000000000 +0800
++++ Math32b_Patch34/src/main/java/org/apache/commons/math3/geometry/euclidean/twod/PolygonsSet.java	2017-04-11 00:31:29.000000000 +0800
+@@ -133,14 +133,14 @@
+ 
+         if (v.length == 0) {
+             final BSPTree<Euclidean2D> tree = getTree(false);
+-            if ((Boolean) tree.getAttribute()) {
+-                // the instance covers the whole space
+-                setSize(Double.POSITIVE_INFINITY);
+-                setBarycenter(Vector2D.NaN);
++        if (false) {
++		setSize(java.lang.Double.POSITIVE_INFINITY);
++		setBarycenter(org.apache.commons.math3.geometry.euclidean.twod.Vector2D.NaN);
+             } else {
+                 setSize(0);
+-                setBarycenter(new Vector2D(0, 0));
++		setBarycenter(new org.apache.commons.math3.geometry.euclidean.twod.Vector2D(0 , 0));
+             }
++
+         } else if (v[0][0] == null) {
+             // there is at least one open-loop: the polygon is infinite
+             setSize(Double.POSITIVE_INFINITY);

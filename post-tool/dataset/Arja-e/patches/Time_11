@@ -1,0 +1,33 @@
+diff -w -r -u Time11b/src/main/java/org/joda/time/tz/DateTimeZoneBuilder.java Time11b_Patch573/src/main/java/org/joda/time/tz/DateTimeZoneBuilder.java
+--- Time11b/src/main/java/org/joda/time/tz/DateTimeZoneBuilder.java	2019-03-31 14:23:05.000000000 -0400
++++ Time11b_Patch573/src/main/java/org/joda/time/tz/DateTimeZoneBuilder.java	2019-03-31 15:31:22.000000000 -0400
+@@ -1455,23 +1455,16 @@
+             }
+ 
+             if (tailZone != null) {
+-                if (tailZone.iStartRecurrence.getNameKey()
+-                    .equals(tailZone.iEndRecurrence.getNameKey())) {
++                if (tailZone.iStartRecurrence.getNameKey().equals(tailZone.iEndRecurrence.getNameKey()) && id == null) {
+                     if (ZoneInfoCompiler.verbose()) {
+-                        System.out.println("Fixing duplicate recurrent name key - " +
+-                                           tailZone.iStartRecurrence.getNameKey());
++						System.out.println(
++								"Fixing duplicate recurrent name key - " + tailZone.iStartRecurrence.getNameKey());
+                     }
+                     if (tailZone.iStartRecurrence.getSaveMillis() > 0) {
+-                        tailZone = new DSTZone(
+-                            tailZone.getID(),
+-                            tailZone.iStandardOffset,
+-                            tailZone.iStartRecurrence.renameAppend("-Summer"),
+-                            tailZone.iEndRecurrence);
++						tailZone = new DSTZone(tailZone.getID(), tailZone.iStandardOffset,
++								tailZone.iStartRecurrence.renameAppend("-Summer"), tailZone.iEndRecurrence);
+                     } else {
+-                        tailZone = new DSTZone(
+-                            tailZone.getID(),
+-                            tailZone.iStandardOffset,
+-                            tailZone.iStartRecurrence,
++						tailZone = new DSTZone(tailZone.getID(), tailZone.iStandardOffset, tailZone.iStartRecurrence,
+                             tailZone.iEndRecurrence.renameAppend("-Summer"));
+                     }
+                 }

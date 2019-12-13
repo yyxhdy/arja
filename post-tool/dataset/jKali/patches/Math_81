@@ -1,0 +1,12 @@
+diff -w -r -u Math81b/src/main/java/org/apache/commons/math/linear/EigenDecompositionImpl.java Math81b_Patch63/src/main/java/org/apache/commons/math/linear/EigenDecompositionImpl.java
+--- Math81b/src/main/java/org/apache/commons/math/linear/EigenDecompositionImpl.java	2017-03-21 00:04:22.000000000 +0800
++++ Math81b_Patch63/src/main/java/org/apache/commons/math/linear/EigenDecompositionImpl.java	2017-04-11 00:51:48.000000000 +0800
+@@ -1526,6 +1526,8 @@
+             } else if (dMin == dN2) {
+ 
+                 // case 5.
++                if (true)
++                    return ;
+                 tType = -5;
+                 double s = 0.25 * dMin;
+ 

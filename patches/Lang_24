@@ -1,0 +1,13 @@
+diff -w -r -u Lang24b/src/main/java/org/apache/commons/lang3/math/NumberUtils.java Lang24b_Patch/src/main/java/org/apache/commons/lang3/math/NumberUtils.java
+--- Lang24b/src/main/java/org/apache/commons/lang3/math/NumberUtils.java	2019-03-31 14:17:56.000000000 -0400
++++ Lang24b_Patch/src/main/java/org/apache/commons/lang3/math/NumberUtils.java	2019-03-31 14:17:56.000000000 -0400
+@@ -1409,6 +1409,9 @@
+             }
+             if (chars[i] == 'l'
+                 || chars[i] == 'L') {
++                if (hasDecPoint || hasExp) {
++						return false;
++					}
+                 // not allowing L with an exponent or decimal point
+                 return foundDigit && !hasExp;
+             }

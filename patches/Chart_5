@@ -1,0 +1,12 @@
+diff -w -r -u Chart5b/source/org/jfree/data/xy/XYSeries.java Chart5b_Patch/source/org/jfree/data/xy/XYSeries.java
+--- Chart5b/source/org/jfree/data/xy/XYSeries.java	2019-03-31 14:16:56.000000000 -0400
++++ Chart5b_Patch/source/org/jfree/data/xy/XYSeries.java	2019-03-31 14:16:56.000000000 -0400
+@@ -561,7 +561,7 @@
+             // new item...otherwise it will be just -1 and we should just
+             // append the value to the list...
+             if (this.autoSort) {
+-                this.data.add(-index - 1, new XYDataItem(x, y));
++                add(x, y, true);
+             }
+             else {
+                 this.data.add(new XYDataItem(x, y));

@@ -1,0 +1,12 @@
+diff -w -r -u Math2b/src/main/java/org/apache/commons/math3/distribution/AbstractIntegerDistribution.java Math2b_Patch27/src/main/java/org/apache/commons/math3/distribution/AbstractIntegerDistribution.java
+--- Math2b/src/main/java/org/apache/commons/math3/distribution/AbstractIntegerDistribution.java	2017-03-20 23:45:21.000000000 +0800
++++ Math2b_Patch27/src/main/java/org/apache/commons/math3/distribution/AbstractIntegerDistribution.java	2017-04-11 00:24:06.000000000 +0800
+@@ -135,7 +135,7 @@
+             k = 1.0 / k;
+             tmp = mu + k * sigma;
+             if (tmp < upper) {
+-                upper = ((int) Math.ceil(tmp)) - 1;
++                tmp = mu + (k * sigma);
+             }
+         }
+ 

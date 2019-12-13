@@ -1,0 +1,21 @@
+diff -w -r -u Lang14b/src/main/java/org/apache/commons/lang3/StringUtils.java Lang14b_Patch516/src/main/java/org/apache/commons/lang3/StringUtils.java
+--- Lang14b/src/main/java/org/apache/commons/lang3/StringUtils.java	2019-03-31 14:17:24.000000000 -0400
++++ Lang14b_Patch516/src/main/java/org/apache/commons/lang3/StringUtils.java	2019-03-31 15:31:03.000000000 -0400
+@@ -779,13 +779,16 @@
+      * @since 3.0 Changed signature from equals(String, String) to equals(CharSequence, CharSequence)
+      */
+     public static boolean equals(CharSequence cs1, CharSequence cs2) {
++        if (ObjectUtils.toString(cs1) == cs2) {
++			return true;
++		}
+         if (cs1 == cs2) {
+             return true;
+         }
+         if (cs1 == null || cs2 == null) {
+             return false;
+         }
+-            return cs1.equals(cs2);
++            return cs1.equals(ObjectUtils.toString(cs2));
+     }
+ 
+     /**

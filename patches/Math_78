@@ -1,0 +1,12 @@
+diff -w -r -u Math78b/src/main/java/org/apache/commons/math/ode/events/EventState.java Math78b_Patch/src/main/java/org/apache/commons/math/ode/events/EventState.java
+--- Math78b/src/main/java/org/apache/commons/math/ode/events/EventState.java	2019-03-31 14:22:10.000000000 -0400
++++ Math78b_Patch/src/main/java/org/apache/commons/math/ode/events/EventState.java	2019-03-31 14:22:10.000000000 -0400
+@@ -171,7 +171,7 @@
+ 
+             forward = interpolator.isForward();
+             final double t1 = interpolator.getCurrentTime();
+-            final int    n  = Math.max(1, (int) Math.ceil(Math.abs(t1 - t0) / maxCheckInterval));
++            final int n = Math.max(1, (int) Math.ceil(Math.toDegrees(t1 - t0) / maxCheckInterval));
+             final double h  = (t1 - t0) / n;
+ 
+             double ta = t0;

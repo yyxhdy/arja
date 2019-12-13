@@ -1,0 +1,12 @@
+diff -w -r -u Chart15b/source/org/jfree/chart/plot/PiePlot3D.java Chart15b_Patch13/source/org/jfree/chart/plot/PiePlot3D.java
+--- Chart15b/source/org/jfree/chart/plot/PiePlot3D.java	2017-03-20 23:22:52.000000000 +0800
++++ Chart15b_Patch13/source/org/jfree/chart/plot/PiePlot3D.java	2017-04-11 00:14:59.000000000 +0800
+@@ -227,6 +227,8 @@
+                      PlotRenderingInfo info) {
+ 
+         // adjust for insets...
++        if (true)
++            return ;
+         RectangleInsets insets = getInsets();
+         insets.trim(plotArea);
+ 

@@ -1,0 +1,25 @@
+diff -w -r -u Lang21b/src/main/java/org/apache/commons/lang3/time/DateUtils.java Lang21b_Patch/src/main/java/org/apache/commons/lang3/time/DateUtils.java
+--- Lang21b/src/main/java/org/apache/commons/lang3/time/DateUtils.java	2019-03-31 14:17:45.000000000 -0400
++++ Lang21b_Patch/src/main/java/org/apache/commons/lang3/time/DateUtils.java	2019-03-31 14:17:45.000000000 -0400
+@@ -259,14 +259,13 @@
+         if (cal1 == null || cal2 == null) {
+             throw new IllegalArgumentException("The date must not be null");
+         }
+-        return (cal1.get(Calendar.MILLISECOND) == cal2.get(Calendar.MILLISECOND) &&
+-                cal1.get(Calendar.SECOND) == cal2.get(Calendar.SECOND) &&
+-                cal1.get(Calendar.MINUTE) == cal2.get(Calendar.MINUTE) &&
+-                cal1.get(Calendar.HOUR) == cal2.get(Calendar.HOUR) &&
+-                cal1.get(Calendar.DAY_OF_YEAR) == cal2.get(Calendar.DAY_OF_YEAR) &&
+-                cal1.get(Calendar.YEAR) == cal2.get(Calendar.YEAR) &&
+-                cal1.get(Calendar.ERA) == cal2.get(Calendar.ERA) &&
+-                cal1.getClass() == cal2.getClass());
++        return (cal1.get(Calendar.DST_OFFSET) == cal2.get(Calendar.MILLISECOND)
++				&& cal1.get(Calendar.SECOND) == cal2.get(Calendar.SECOND)
++				&& cal1.get(Calendar.MINUTE) == cal2.get(Calendar.MINUTE)
++				&& cal1.get(Calendar.HOUR) == cal2.get(Calendar.HOUR)
++				&& cal1.get(Calendar.DAY_OF_YEAR) == cal2.get(Calendar.DAY_OF_YEAR)
++				&& cal1.get(Calendar.YEAR) == cal2.get(Calendar.YEAR)
++				&& cal1.get(Calendar.ERA) == cal2.get(Calendar.ERA) && cal1.getClass() == cal2.getClass());
+     }
+ 
+     //-----------------------------------------------------------------------

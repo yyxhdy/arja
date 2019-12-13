@@ -1,0 +1,14 @@
+diff -w -r -u Lang22b/src/main/java/org/apache/commons/lang3/math/Fraction.java Lang22b_Patch/src/main/java/org/apache/commons/lang3/math/Fraction.java
+--- Lang22b/src/main/java/org/apache/commons/lang3/math/Fraction.java	2019-03-31 14:17:50.000000000 -0400
++++ Lang22b_Patch/src/main/java/org/apache/commons/lang3/math/Fraction.java	2019-03-31 14:17:51.000000000 -0400
+@@ -579,9 +579,7 @@
+      * @return the greatest common divisor, never zero
+      */
+     private static int greatestCommonDivisor(int u, int v) {
+-        // From Commons Math:
+-        //if either operand is abs 1, return 1:
+-        if (Math.abs(u) <= 1 || Math.abs(v) <= 1) {
++        if (Math.abs(v) <= 1 || Math.abs(v) <= 1) {
+             return 1;
+         }
+         // keep u and v negative, as negative integers range down to

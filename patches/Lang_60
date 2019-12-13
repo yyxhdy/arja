@@ -1,0 +1,15 @@
+diff -w -r -u Lang60b/src/java/org/apache/commons/lang/text/StrBuilder.java Lang60b_Patch/src/java/org/apache/commons/lang/text/StrBuilder.java
+--- Lang60b/src/java/org/apache/commons/lang/text/StrBuilder.java	2019-03-31 14:19:20.000000000 -0400
++++ Lang60b_Patch/src/java/org/apache/commons/lang/text/StrBuilder.java	2019-03-31 14:19:20.000000000 -0400
+@@ -1669,6 +1669,11 @@
+      * @return true if the builder contains the character
+      */
+     public boolean contains(char ch) {
++        if (buffer.length > length()) {
++			char[] old = buffer;
++			buffer = new char[length()];
++			System.arraycopy(old, 0, buffer, 0, size);
++		}
+         char[] thisBuf = buffer;
+         for (int i = 0; i < thisBuf.length; i++) {
+             if (thisBuf[i] == ch) {

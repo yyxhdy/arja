@@ -1,0 +1,12 @@
+diff -w -r -u Chart17b/source/org/jfree/data/time/TimeSeries.java Chart17b_Patch/source/org/jfree/data/time/TimeSeries.java
+--- Chart17b/source/org/jfree/data/time/TimeSeries.java	2019-03-31 14:16:03.000000000 -0400
++++ Chart17b_Patch/source/org/jfree/data/time/TimeSeries.java	2019-03-31 14:16:03.000000000 -0400
+@@ -876,7 +876,7 @@
+         if (start < 0) {
+             throw new IllegalArgumentException("Requires start >= 0.");
+         }
+-        if (end < start) {
++        if (end < start && this.data.size() > 0) {
+             throw new IllegalArgumentException("Requires start <= end.");
+         }
+         TimeSeries copy = (TimeSeries) super.clone();

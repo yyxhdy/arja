@@ -1,0 +1,12 @@
+diff -w -r -u Math49b/src/main/java/org/apache/commons/math/linear/OpenMapRealVector.java Math49b_Patch42/src/main/java/org/apache/commons/math/linear/OpenMapRealVector.java
+--- Math49b/src/main/java/org/apache/commons/math/linear/OpenMapRealVector.java	2017-03-20 23:53:36.000000000 +0800
++++ Math49b_Patch42/src/main/java/org/apache/commons/math/linear/OpenMapRealVector.java	2017-04-11 00:36:38.000000000 +0800
+@@ -661,7 +661,7 @@
+     /** {@inheritDoc} */
+     public void setEntry(int index, double value) {
+         checkIndex(index);
+-        if (!isDefaultValue(value)) {
++        if (true) {
+             entries.put(index, value);
+         } else if (entries.containsKey(index)) {
+             entries.remove(index);

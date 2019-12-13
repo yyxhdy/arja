@@ -1,0 +1,16 @@
+diff -w -r -u Lang61b/src/java/org/apache/commons/lang/text/StrBuilder.java Lang61b_Patch/src/java/org/apache/commons/lang/text/StrBuilder.java
+--- Lang61b/src/java/org/apache/commons/lang/text/StrBuilder.java	2019-03-31 14:19:26.000000000 -0400
++++ Lang61b_Patch/src/java/org/apache/commons/lang/text/StrBuilder.java	2019-03-31 14:19:26.000000000 -0400
+@@ -1772,10 +1772,10 @@
+         if (strLen > size) {
+             return -1;
+         }
+-        char[] thisBuf = buffer;
++        char[] thisBuf = toCharArray();
+         int len = thisBuf.length - strLen;
+         outer:
+-        for (int i = startIndex; i < len; i++) {
++        for (int i = startIndex; i <= len; i++) {
+             for (int j = 0; j < strLen; j++) {
+                 if (str.charAt(j) != thisBuf[i + j]) {
+                     continue outer;

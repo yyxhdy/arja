@@ -1,0 +1,25 @@
+diff -w -r -u Math4b/src/main/java/org/apache/commons/math3/geometry/euclidean/threed/SubLine.java Math4b_Patch/src/main/java/org/apache/commons/math3/geometry/euclidean/threed/SubLine.java
+--- Math4b/src/main/java/org/apache/commons/math3/geometry/euclidean/threed/SubLine.java	2019-03-31 14:20:35.000000000 -0400
++++ Math4b_Patch/src/main/java/org/apache/commons/math3/geometry/euclidean/threed/SubLine.java	2019-03-31 14:20:35.000000000 -0400
+@@ -109,8 +109,7 @@
+      */
+     public Vector3D intersection(final SubLine subLine, final boolean includeEndPoints) {
+ 
+-        // compute the intersection on infinite line
+-        Vector3D v1D = line.intersection(subLine.line);
++        Vector3D v1D = line.closestPoint(subLine.line);
+ 
+         // check location of point with respect to first sub-line
+         Location loc1 = remainingRegion.checkPoint(line.toSubSpace(v1D));
+diff -w -r -u Math4b/src/main/java/org/apache/commons/math3/geometry/euclidean/twod/SubLine.java Math4b_Patch/src/main/java/org/apache/commons/math3/geometry/euclidean/twod/SubLine.java
+--- Math4b/src/main/java/org/apache/commons/math3/geometry/euclidean/twod/SubLine.java	2019-03-31 14:20:35.000000000 -0400
++++ Math4b_Patch/src/main/java/org/apache/commons/math3/geometry/euclidean/twod/SubLine.java	2019-03-31 14:20:35.000000000 -0400
+@@ -116,6 +116,8 @@
+         // compute the intersection on infinite line
+         Vector2D v2D = line1.intersection(line2);
+ 
++        if (!(getRemainingRegion() != null && line1 != null && v2D != null))
++			return null;
+         // check location of point with respect to first sub-line
+         Location loc1 = getRemainingRegion().checkPoint(line1.toSubSpace(v2D));
+ 

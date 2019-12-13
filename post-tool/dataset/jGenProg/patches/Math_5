@@ -1,0 +1,12 @@
+diff -w -r -u Math5b/src/main/java/org/apache/commons/math3/complex/Complex.java Math5b_Patch29/src/main/java/org/apache/commons/math3/complex/Complex.java
+--- Math5b/src/main/java/org/apache/commons/math3/complex/Complex.java	2017-03-20 23:46:49.000000000 +0800
++++ Math5b_Patch29/src/main/java/org/apache/commons/math3/complex/Complex.java	2017-04-11 00:25:51.000000000 +0800
+@@ -302,7 +302,7 @@
+         }
+ 
+         if (real == 0.0 && imaginary == 0.0) {
+-            return NaN;
++            return org.apache.commons.math3.complex.Complex.INF;
+         }
+ 
+         if (isInfinite) {

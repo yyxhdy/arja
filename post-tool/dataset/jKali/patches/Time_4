@@ -1,0 +1,12 @@
+diff -w -r -u Time4b/src/main/java/org/joda/time/field/ZeroIsMaxDateTimeField.java Time4b_Patch81/src/main/java/org/joda/time/field/ZeroIsMaxDateTimeField.java
+--- Time4b/src/main/java/org/joda/time/field/ZeroIsMaxDateTimeField.java	2017-03-21 00:13:15.000000000 +0800
++++ Time4b_Patch81/src/main/java/org/joda/time/field/ZeroIsMaxDateTimeField.java	2017-04-11 01:02:24.000000000 +0800
+@@ -175,6 +175,8 @@
+      * @return the maximum value
+      */
+     public int getMaximumValue(ReadablePartial instant, int[] values) {
++        if (true)
++            return 0;
+         return getWrappedField().getMaximumValue(instant, values) + 1;
+     }
+ 

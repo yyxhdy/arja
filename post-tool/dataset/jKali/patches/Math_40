@@ -1,0 +1,19 @@
+diff -w -r -u Math40b/src/main/java/org/apache/commons/math/analysis/solvers/BracketingNthOrderBrentSolver.java Math40b_Patch38/src/main/java/org/apache/commons/math/analysis/solvers/BracketingNthOrderBrentSolver.java
+--- Math40b/src/main/java/org/apache/commons/math/analysis/solvers/BracketingNthOrderBrentSolver.java	2017-03-20 23:51:29.000000000 +0800
++++ Math40b_Patch38/src/main/java/org/apache/commons/math/analysis/solvers/BracketingNthOrderBrentSolver.java	2017-04-11 00:34:31.000000000 +0800
+@@ -257,14 +257,11 @@
+                     // the guessed root is either not strictly inside the interval or it
+                     // is a NaN (which occurs when some sampling points share the same y)
+                     // we try again with a lower interpolation order
+-                    if (signChangeIndex - start >= end - signChangeIndex) {
+-                        // we have more points before the sign change, drop the lowest point
++                    if (true) {
+                         ++start;
+                     } else {
+-                        // we have more points after sign change, drop the highest point
+                         --end;
+                     }
+-
+                     // we need to do one more attempt
+                     nextX = Double.NaN;
+ 

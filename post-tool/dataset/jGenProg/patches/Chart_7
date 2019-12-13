@@ -1,0 +1,12 @@
+diff -w -r -u Chart7b/source/org/jfree/data/time/TimePeriodValues.java Chart7b_Patch8/source/org/jfree/data/time/TimePeriodValues.java
+--- Chart7b/source/org/jfree/data/time/TimePeriodValues.java	2017-03-20 23:19:56.000000000 +0800
++++ Chart7b_Patch8/source/org/jfree/data/time/TimePeriodValues.java	2017-04-11 01:16:26.000000000 +0800
+@@ -549,7 +549,7 @@
+      * @return The index.
+      */
+     public int getMaxMiddleIndex() {
+-        return this.maxMiddleIndex;
++        return this.maxEndIndex;
+     }
+ 
+     /**
