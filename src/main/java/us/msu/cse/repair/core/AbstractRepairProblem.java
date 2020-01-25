@@ -183,7 +183,7 @@ public abstract class AbstractRepairProblem extends Problem {
 
 		binWorkingRoot = (String) parameters.get("binWorkingRoot");
 		if (binWorkingRoot == null)
-			binWorkingRoot = "/tmp/working_" + id;
+			binWorkingRoot = System.getProperty("java.io.tmpdir") + System.getProperty("file.separator") + "working_" + id;
 		
 		patchOutputRoot = (String) parameters.get("patchOutputRoot");
 		if (patchOutputRoot == null)
@@ -191,11 +191,11 @@ public abstract class AbstractRepairProblem extends Problem {
 		
 		orgPosTestsInfoPath = (String) parameters.get("orgPosTestsInfoPath");
 		if (orgPosTestsInfoPath == null)
-			orgPosTestsInfoPath = "/tmp/orgTests_" + id + ".txt";
+			orgPosTestsInfoPath = System.getProperty("java.io.tmpdir") + System.getProperty("file.separator") + "orgTests_" + id + ".txt";
 		
 		finalTestsInfoPath = (String) parameters.get("finalTestsInfoPath");
 		if (finalTestsInfoPath == null)
-			finalTestsInfoPath = "/tmp/finalTests_" + id + ".txt";
+			finalTestsInfoPath = System.getProperty("java.io.tmpdir") + System.getProperty("file.separator") + "finalTests_" + id + ".txt";
 
 		manipulationNames = (String[]) parameters.get("manipulationNames");
 		if (manipulationNames == null)
