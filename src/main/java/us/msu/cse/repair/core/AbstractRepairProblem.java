@@ -153,6 +153,8 @@ public abstract class AbstractRepairProblem extends Problem {
 		binTestDir = (String) parameters.get("binTestDir");
 		srcJavaDir = (String) parameters.get("srcJavaDir");
 		dependences = (Set<String>) parameters.get("dependences");
+		
+		binExecuteTestClasses = (Set<String>) parameters.get("tests");
 
 		percentage = (Double) parameters.get("percentage");
 
@@ -283,7 +285,9 @@ public abstract class AbstractRepairProblem extends Problem {
 	void invokeClassFinder() throws ClassNotFoundException, IOException {
 		ClassFinder finder = new ClassFinder(binJavaDir, binTestDir, dependences);
 		binJavaClasses = finder.findBinJavaClasses();
-		binExecuteTestClasses = finder.findBinExecuteTestClasses();
+		
+		if (binExecuteTestClasses == null)
+			binExecuteTestClasses = finder.findBinExecuteTestClasses();
 
 		if (javaClassesInfoPath != null)
 			FileUtils.writeLines(new File(javaClassesInfoPath), binJavaClasses);

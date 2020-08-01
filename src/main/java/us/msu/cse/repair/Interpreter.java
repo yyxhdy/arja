@@ -32,6 +32,17 @@ public class Interpreter {
 				dependences.add(st.trim());
 			parameters.put("dependences", dependences);	
 		}	
+		
+		
+		String testsS = parameterStrs.get("tests");	
+		if (testsS != null) {
+			Set<String> tests = new HashSet<String>();
+			String strs[] = testsS.split(":");
+			for (String st : strs)
+				tests.add(st.trim());
+			parameters.put("tests", tests);	
+		}	
+		
 			
 		String thrS = parameterStrs.get("thr");
 		if (thrS != null) {

@@ -14,6 +14,10 @@ public class ParameterInfoMain {
 		System.out.println("-Ddependences : the dependences (jar files) of the buggy program, \n"
 				+ "	        separated by \":\", and at least including a junit jar");
 		System.out.println("-------------------------------------------------------------------------------------");
+		System.out.println("-Dtests : canonical names of test classes to be considered, separated by \":\", \n"
+				+ "          if not specified, all test classes are considered");
+		System.out.println("-------------------------------------------------------------------------------------");
+		
 		System.out.println("-DpatchOutputRoot  : the directory of the output test-suite adequate patches, "
 				+ "\n                     default $current dir$/patches_id");
 		System.out.println("-------------------------------------------------------------------------------------");
