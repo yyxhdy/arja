@@ -33,7 +33,7 @@ for GP to traverse to find a solution.
 
 First, clone ARJA-e to the local computer:
 ```
-$ git clone https://github.com/ywmsu/arja-e
+$ git clone -b arja-e https://github.com/yyxhdy/arja
 ```
 There are four subdirectories in the root directory of this system:
 1. ../arja-e/src :  the source code of the core of the system
