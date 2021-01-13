@@ -62,7 +62,7 @@ public class SeedLineGeneratorProcess {
 		params.add(binJavaDir);
 		params.add(binTestDir);
 
-		if (dependences == null || !dependences.isEmpty())
+		if (dependences == null || dependences.isEmpty())
 			params.add(File.pathSeparator);
 		else {
 			String dps = "";
