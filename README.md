@@ -71,12 +71,12 @@ Confirm that the current version of Java is JDK 1.7 and use the following comman
 ```
 $ java -cp lib/*:bin us.msu.cse.repair.Main ArjaE -DsrcJavaDir path_to_directory_of_src_buggy \
 						-DbinJavaDir path_to_directory_of_binary_source_buggy \
-						-DbinTestDir path_to_directory_of_binary_test_buggy  \
+						-DbinTestDir path_to_directory_of_binary_test_buggy Â \
 						-Ddependences paths_to_dependences_buggy 
 ```
 "ArjaE" means that the repair approach ARJA-e is run. Alternatively, "Arja", "GenProg", "RSRepair" and "Kali" can 
 be used. Moreover, at least four parameters related with the buggy program are required.
-1. -DsrcJavaDir  :  the path to the root directory of the source code 
+1. -DsrcJavaDir  :Â  the path to the root directory of the source code 
 2. -DbinJavaDir  : the path to the root directory of all the compiled classes of source code
 3. -DbinTestDir  :  the path to the root directory of all the compiled classes of test code
 4. -Ddependences :  the paths to the the dependences (jar files). If more than one, separated by ":"
@@ -99,13 +99,13 @@ The following is an example to use more than four parameters:
 ```
 $ java -cp lib/*:bin us.msu.cse.repair.Main ArjaE -DsrcJavaDir path_to_directory_of_src_buggy \
 						-DbinJavaDir path_to_directory_of_binary_source_buggy \
-						-DbinTestDir path_to_directory_of_binary_test_buggy \
+						-DbinTestDir path_to_directory_of_binary_test_buggyÂ \
 						-Ddependences paths_to_dependences_buggy \
 						-DpopulationSize value_of_population_size \
 						-DgzoltarDataDir path_to_directory_of_Gzoltar_output \
 ```
 In this command, the parameter -DpopulationSize sets the population size of ARJA-e to "value_of_population_size";
-the parameter -DgzoltarDataDir specifies the path to the root directory of the Gzoltar 1.6.2 output (see http://www.gzoltar.com/command-line.html).
+the parameter -DgzoltarDataDir specifies the path to the root directory of the Gzoltar 1.6.2 output (see https://github.com/GZoltar/gzoltar/tree/master/com.gzoltar.cli).
 
 
 ## Evaluation
