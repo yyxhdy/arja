@@ -514,7 +514,7 @@ public class IngredientUtil {
 						return false;
 				} else {
 					ITypeBinding tb = rs.getExpression().resolveTypeBinding();
-					if (!tb.isAssignmentCompatible(methodReturnTypeBinding))
+					if (tb != null && !tb.isAssignmentCompatible(methodReturnTypeBinding))
 						return false;
 				}
 			} else {
